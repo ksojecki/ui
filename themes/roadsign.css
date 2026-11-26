@@ -1,4 +1,4 @@
-/* traffic palette: light plus roadsign-dark, which follows the OS when no data-theme is set. */
+/* roadsign palette: light plus roadsign-dark, which follows the OS when no data-theme is set. */
 
 @plugin "daisyui/theme" {
   name: 'roadsign';

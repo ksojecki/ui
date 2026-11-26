@@ -3,12 +3,12 @@ import { Metric } from './Metric';
 
 describe('Metric', () => {
   it('renders without a frame by default', () => {
-    const { container } = render(<Metric label="Balance" value="120 PLN" />);
+    const { container } = render(<Metric label="Inventory" value="120 items" />);
 
     const stat = container.firstElementChild as HTMLElement;
     expect(stat.classList.contains('stat')).toBe(true);
     expect(stat.classList.contains('border')).toBe(false);
-    expect(screen.getByText('120 PLN').classList.contains('stat-value')).toBe(true);
+    expect(screen.getByText('120 items').classList.contains('stat-value')).toBe(true);
   });
 
   it('adds a bordered card for the boxed appearance', () => {

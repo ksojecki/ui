@@ -53,10 +53,10 @@ export function LayoutSection() {
           <div className="w-full">
             <PageHeader
               actions={<Button purpose="create">New</Button>}
-              description="All accounts and their balances."
-              eyebrow="Budget"
-              meta={<Badge purpose="info">3 accounts</Badge>}
-              title="Accounts"
+              description="Browse and manage saved items."
+              eyebrow="Library"
+              meta={<Badge purpose="info">3 items</Badge>}
+              title="Saved items"
             />
             <PageHeader appearance="plain" title="Plain header" />
           </div>
@@ -70,10 +70,10 @@ export function LayoutSection() {
             <BottomSheet
               onOpenChange={setSheetOpen}
               open={sheetOpen}
-              summary="3 routes found"
+              summary="3 results found"
               title="Results"
             >
-              <Paragraph>Route details go here.</Paragraph>
+              <Paragraph>Result details go here.</Paragraph>
             </BottomSheet>
           </div>
         </Specimen>

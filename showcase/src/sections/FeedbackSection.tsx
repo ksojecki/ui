@@ -61,7 +61,7 @@ export function FeedbackSection() {
                 onDismiss={() => setToasts((all) => all.filter((t) => t !== id))}
                 purpose="success"
               >
-                Transaction saved.
+                Item saved.
               </Toast>
             ))}
           </ToastRegion>
@@ -71,7 +71,7 @@ export function FeedbackSection() {
             <Spinner key={size} size={size} />
           ))}
           <Skeleton className="h-8 w-40" />
-          <Tooltip position="bottom" text="Remove this transaction">
+          <Tooltip position="bottom" text="Remove this item">
             <Button tone="neutral" variant="outline">
               Hover me
             </Button>
@@ -84,13 +84,13 @@ export function FeedbackSection() {
             error="Server unavailable."
             onCancel={() => undefined}
             onConfirm={() => undefined}
-            warning="Transactions in this category become uncategorised."
+            warning="This item will be permanently removed."
           />
         </Specimen>
         <Specimen title="EmptyState">
           <div className="w-full">
-            <EmptyState action={<Button purpose="create">Add one</Button>} title="No accounts yet">
-              Create your first account to start tracking.
+            <EmptyState action={<Button purpose="create">Add one</Button>} title="No items yet">
+              Add an item to get started.
             </EmptyState>
           </div>
         </Specimen>

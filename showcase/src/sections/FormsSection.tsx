@@ -29,12 +29,12 @@ function TextControls() {
   return (
     <Specimen title="Input / Textarea / Select">
       <div className="flex w-full flex-col gap-3">
-        <Input hint="As shown on the invoice." label="Payee" placeholder="Acme Ltd" />
-        <Input error="Enter a valid amount." label="Amount" defaultValue="12,x" />
+        <Input hint="Use a short, descriptive name." label="Name" placeholder="Desk lamp" />
+        <Input error="Enter a valid quantity." label="Quantity" defaultValue="12,x" />
         <Input disabled label="Disabled" defaultValue="Locked" />
         <Select label="Category">
-          <option>Groceries</option>
-          <option>Transport</option>
+          <option>Lighting</option>
+          <option>Stationery</option>
         </Select>
         <Select error="Pick a category." label="Category (error)">
           <option>Choose</option>
@@ -80,7 +80,7 @@ function ChoiceControls() {
         />
         <Switch hint="Sends a weekly summary." label="Email digest" />
         <Switch error="Not available." label="Beta" />
-        <Range label="Budget share" max={100} min={0} onChange={setRange} value={range} />
+        <Range label="Progress" max={100} min={0} onChange={setRange} value={range} />
         <Range
           label="Warning range"
           min={0}
@@ -89,7 +89,7 @@ function ChoiceControls() {
           purpose="warning"
           value={range}
         />
-        <FileInput hint="PDF up to 5 MB." label="Receipt" />
+        <FileInput hint="PDF up to 5 MB." label="Attachment" />
         <SegmentedControl
           label="Period"
           onChange={setSegment}
@@ -111,7 +111,7 @@ function ChoiceControls() {
         <TimePicker
           changeHourLabel="Change hour"
           id="showcase-time"
-          label="Departure"
+          label="Time"
           onChange={setTime}
           selectHourLabel="Hour"
           selectMinuteLabel="Minute"
@@ -128,13 +128,13 @@ function FilterAndActions() {
       <Specimen title="FilterBar / FilterRow">
         <FilterBar actions={<Button purpose="save">Apply</Button>} className="w-full">
           <Input aria-label="Search" placeholder="Search" fullWidth={false} />
-          <Select aria-label="Account" fullWidth={false}>
-            <option>All accounts</option>
+          <Select aria-label="Category" fullWidth={false}>
+            <option>All categories</option>
           </Select>
         </FilterBar>
         <FilterRow onRemove={() => undefined} removeLabel="Remove filter">
           <Select aria-label="Field" fullWidth={false}>
-            <option>Amount</option>
+            <option>Quantity</option>
           </Select>
           <Input aria-label="Value" fullWidth={false} />
         </FilterRow>
@@ -142,7 +142,7 @@ function FilterAndActions() {
       <Specimen title="FormActions">
         <FormActions
           cancelLabel="Cancel"
-          error="Could not save the transaction."
+          error="Could not save the item."
           onCancel={() => undefined}
           saveLabel="Save"
         />

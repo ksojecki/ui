@@ -4,9 +4,9 @@ import { Section } from '@ksojecki/platform-ui/layout';
 import { Specimen } from '../Specimen';
 
 const ROWS = [
-  { id: 1, payee: 'Green Market', category: 'Groceries', amount: -42.5, status: 'cleared' },
-  { id: 2, payee: 'City Transit', category: 'Transport', amount: -18, status: 'pending' },
-  { id: 3, payee: 'Employer Ltd', category: 'Salary', amount: 3200, status: 'cleared' },
+  { id: 1, name: 'Desk lamp', category: 'Lighting', quantity: 8, status: 'available' },
+  { id: 2, name: 'Notebook', category: 'Stationery', quantity: 0, status: 'backordered' },
+  { id: 3, name: 'Storage box', category: 'Storage', quantity: 14, status: 'available' },
 ];
 
 export function DataSection() {
@@ -39,20 +39,20 @@ export function DataSection() {
           <div className="w-full">
             <DataTable
               columns={[
-                { key: 'payee' },
+                { key: 'name' },
                 { key: 'category' },
-                { key: 'amount', kind: 'number', format: (v) => Number(v).toFixed(2) },
+                { key: 'quantity', kind: 'number' },
                 {
                   id: 'status',
                   header: 'Status',
                   render: (row) => (
-                    <Badge purpose={row.status === 'cleared' ? 'success' : 'warning'} size="sm">
+                    <Badge purpose={row.status === 'available' ? 'success' : 'warning'} size="sm">
                       {row.status}
                     </Badge>
                   ),
                 },
               ]}
-              label="Transactions"
+              label="Inventory"
               rows={ROWS}
               zebra
             />
@@ -61,14 +61,14 @@ export function DataSection() {
         </Specimen>
         <Specimen title="Metric / MetricGroup">
           <MetricGroup responsive>
-            <Metric description="This month" label="Balance" value="4 280,00" />
-            <Metric label="Spent" tone="error" value="-1 120,40" />
-            <Metric label="Saved" tone="success" value="+640,00" />
+            <Metric description="Across all categories" label="Items" value="128" />
+            <Metric label="Out of stock" tone="error" value="5" />
+            <Metric label="In stock" tone="success" value="123" />
           </MetricGroup>
           <Metric
             appearance="boxed"
             description="vs. last month"
-            label="Boxed"
+            label="Stock growth"
             tone="info"
             value="12%"
           />

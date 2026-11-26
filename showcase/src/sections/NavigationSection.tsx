@@ -21,13 +21,13 @@ function NavbarStrip() {
       <header className="navbar paper-navbar w-full gap-3 px-4">
         <span className="font-semibold">Brand</span>
         <NavMenu label="Menu">
-          <NavMenuItem label="Accounts">
-            <NavMenuColumn title="Banking">
+          <NavMenuItem label="Library">
+            <NavMenuColumn title="Browse">
               <MenuItem>
                 <MenuButton>Overview</MenuButton>
               </MenuItem>
               <MenuItem>
-                <MenuButton>Transfers</MenuButton>
+                <MenuButton>Collections</MenuButton>
               </MenuItem>
             </NavMenuColumn>
           </NavMenuItem>
@@ -56,14 +56,14 @@ export function NavigationSection() {
     <Section description="@ksojecki/platform-ui/navigation" id="navigation" title="Navigation">
       <div className="flex flex-col gap-6">
         <Specimen title="Link (plain, tones, asButton)">
-          <Link to="/accounts">Plain link</Link>
-          <Link to="/accounts" tone="secondary">
+          <Link to="/items">Plain link</Link>
+          <Link to="/items" tone="secondary">
             Secondary
           </Link>
-          <Link asButton purpose="create" to="/accounts">
+          <Link asButton purpose="create" to="/items">
             As button
           </Link>
-          <Link asButton size="sm" to="/accounts" tone="neutral" variant="outline">
+          <Link asButton size="sm" to="/items" tone="neutral" variant="outline">
             Outline button
           </Link>
         </Specimen>

@@ -46,20 +46,20 @@ describe('Menu', () => {
 
   it('marks only the NavLink whose route matches', () => {
     render(
-      <MemoryRouter initialEntries={['/budget/ledger']}>
+      <MemoryRouter initialEntries={['/library/collection']}>
         <Menu>
-          <MenuNavLink end to="/budget">
-            Budget
+          <MenuNavLink end to="/library">
+            Library
           </MenuNavLink>
-          <MenuNavLink to="/budget/ledger">Ledger</MenuNavLink>
+          <MenuNavLink to="/library/collection">Collection</MenuNavLink>
         </Menu>
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: 'Ledger' }).classList.contains('menu-active')).toBe(
+    expect(screen.getByRole('link', { name: 'Collection' }).classList.contains('menu-active')).toBe(
       true,
     );
-    expect(screen.getByRole('link', { name: 'Budget' }).classList.contains('menu-active')).toBe(
+    expect(screen.getByRole('link', { name: 'Library' }).classList.contains('menu-active')).toBe(
       false,
     );
   });

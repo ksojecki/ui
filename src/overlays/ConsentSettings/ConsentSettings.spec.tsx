@@ -28,7 +28,7 @@ const props = (overrides: Partial<ConsentSettingsProps> = {}): ConsentSettingsPr
   intro: 'Choose which categories we may use.',
   necessaryLabel: 'Necessary',
   necessaryDescription: 'Required for the site to work.',
-  rumLabel: 'Usage statistics (Dynatrace)',
+  rumLabel: 'Usage statistics',
   rumDescription: 'Helps us understand page performance.',
   saveLabel: 'Save choice',
   acceptAllLabel: 'Accept all',
@@ -60,15 +60,13 @@ describe('ConsentSettings', () => {
   it('reflects the rumEnabled prop in the statistics switch', () => {
     renderSettings({ rumEnabled: true });
 
-    expect(
-      (screen.getByLabelText('Usage statistics (Dynatrace)') as HTMLInputElement).checked,
-    ).toBe(true);
+    expect((screen.getByLabelText('Usage statistics') as HTMLInputElement).checked).toBe(true);
   });
 
   it('saves the toggled statistics value only when Save is clicked', () => {
     const { settings } = renderSettings();
 
-    fireEvent.click(screen.getByLabelText('Usage statistics (Dynatrace)'));
+    fireEvent.click(screen.getByLabelText('Usage statistics'));
     expect(settings.onSave).not.toHaveBeenCalled();
 
     fireEvent.click(screen.getByRole('button', { name: 'Save choice' }));

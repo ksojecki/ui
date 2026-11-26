@@ -1,9 +1,8 @@
 /*
- * Shared paper rules for the web apps.
+ * Shared surfaces, typography and motion.
  *
- * Import after `@plugin "daisyui" { themes: false; }` in each app's styles.css,
- * then import exactly one `themes/<palette>.css`. App-specific rules belong in
- * that app's stylesheet, which loads after these files.
+ * Import after `@plugin "daisyui" { themes: false; }` in your stylesheet,
+ * then import exactly one `themes/<palette>.css`.
  */
 
 @font-face {

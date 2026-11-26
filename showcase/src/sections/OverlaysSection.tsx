@@ -31,9 +31,9 @@ export function OverlaysSection() {
           api={modal}
           closeLabel="Close dialog"
           size="md"
-          title="Edit account"
+          title="Edit item"
         >
-          <Paragraph>Modal body with realistic content.</Paragraph>
+          <Paragraph>Edit the item details before saving.</Paragraph>
         </ModalWindow>
         <NativeDialog api={dialog} backdropLabel="Close" size="sm" title="Native dialog">
           <Paragraph>Plain dialog box.</Paragraph>
@@ -57,7 +57,7 @@ export function OverlaysSection() {
           policyLink={{ label: 'Privacy policy', to: '/privacy' }}
           rumDescription="Helps us understand page performance."
           rumEnabled={false}
-          rumLabel="Usage statistics (Dynatrace)"
+          rumLabel="Usage statistics"
           saveLabel="Save choice"
           title="Cookie settings"
         />

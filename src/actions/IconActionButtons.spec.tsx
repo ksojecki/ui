@@ -5,14 +5,14 @@ describe('IconActionButtons', () => {
   it('gives each icon-only button the accessible name it is given', () => {
     render(
       <>
-        <EditButton label="Edit account" onClick={() => undefined} />
-        <NewButton label="Add transaction" onClick={() => undefined} />
-        <DeleteButton label="Delete transaction" onClick={() => undefined} />
+        <EditButton label="Edit item" onClick={() => undefined} />
+        <NewButton label="Add item" onClick={() => undefined} />
+        <DeleteButton label="Delete item" onClick={() => undefined} />
       </>,
     );
 
-    expect(screen.getByRole('button', { name: 'Edit account' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Add transaction' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Delete transaction' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Edit item' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Add item' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Delete item' })).toBeTruthy();
   });
 });

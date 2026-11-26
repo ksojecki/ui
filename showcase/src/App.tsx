@@ -36,7 +36,6 @@ export function App() {
   return (
     <div className="min-h-screen bg-base-200 text-base-content">
       <header className="sticky top-0 z-30">
-        {/* Same bar as the apps' navbar, so each palette's header colours show here too. */}
         <div className="navbar paper-navbar flex-wrap gap-x-6 gap-y-2 px-4">
           <Heading level={1} size={4}>
             UI showcase

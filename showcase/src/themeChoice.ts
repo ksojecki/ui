@@ -27,7 +27,7 @@ export function loadThemeChoice(): ThemeChoice {
   } catch {
     // Storage can be blocked; fall through to the default.
   }
-  return { palette: 'budget', scheme: 'light' };
+  return { palette: 'generic', scheme: 'light' };
 }
 
 export function saveThemeChoice(choice: ThemeChoice) {
