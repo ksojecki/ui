@@ -1,5 +1,6 @@
 import {
   cloneElement,
+  createElement,
   type AnchorHTMLAttributes,
   type ButtonHTMLAttributes,
   type ReactElement,
@@ -62,6 +63,11 @@ function isMenuLink(children: MenuItemProps['children']) {
   );
 }
 
+function disabledMenuLink(children: MenuItemProps['children'], className: string) {
+  const { href: _href, onClick: _onClick, to: _to, ...props } = children.props;
+  return createElement('a', { ...props, 'aria-disabled': true, className, role: 'link' });
+}
+
 /** Wraps one link or button in an `li`; `active` and `disabled` mark the child. */
 export function MenuItem({ children, active = false, disabled = false }: MenuItemProps) {
   const className = joinClassNames(
@@ -71,13 +77,7 @@ export function MenuItem({ children, active = false, disabled = false }: MenuIte
   );
 
   if (disabled && isMenuLink(children)) {
-    return (
-      <li>
-        <span aria-disabled="true" className={className}>
-          {children.props.children}
-        </span>
-      </li>
-    );
+    return <li>{disabledMenuLink(children, className)}</li>;
   }
 
   if (disabled) {
