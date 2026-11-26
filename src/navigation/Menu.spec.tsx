@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
+import { Link } from './Link';
 import { Menu, MenuButton, MenuItem, MenuNavLink, MenuTitle } from './Menu';
 
 describe('Menu', () => {
@@ -42,6 +43,65 @@ describe('Menu', () => {
     );
 
     expect(container.querySelector('li')?.className).toBe('menu-title');
+  });
+
+  it.each([MenuButton, 'button'] as const)(
+    'prevents Enter, Space, and click from activating a disabled %s',
+    (ItemButton) => {
+      const activate = vi.fn<() => void>();
+      render(
+        <Menu>
+          <MenuItem disabled>
+            <ItemButton onClick={activate} type="button">
+              Unavailable
+            </ItemButton>
+          </MenuItem>
+        </Menu>,
+      );
+
+      const button = screen.getByRole<HTMLButtonElement>('button', { name: 'Unavailable' });
+      expect(button.disabled).toBe(true);
+      button.focus();
+      expect(document.activeElement).not.toBe(button);
+      for (const key of ['Enter', ' ']) {
+        fireEvent.keyDown(button, { key });
+        fireEvent.keyUp(button, { key });
+      }
+      fireEvent.click(button);
+      expect(activate).not.toHaveBeenCalled();
+    },
+  );
+
+  it('renders disabled native and router links without navigable destinations', () => {
+    const activate = vi.fn<() => void>();
+    render(
+      <MemoryRouter>
+        <Menu>
+          <MenuItem disabled>
+            <a href="/collection" onClick={activate}>
+              Native
+            </a>
+          </MenuItem>
+          <MenuItem disabled>
+            <Link onClick={activate} to="/collection">
+              Router
+            </Link>
+          </MenuItem>
+        </Menu>
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole('link')).toBeNull();
+    const links = [screen.getByText('Native'), screen.getByText('Router')];
+    for (const link of links) {
+      expect(link.hasAttribute('href')).toBe(false);
+      expect(link.getAttribute('aria-disabled')).toBe('true');
+      expect(link.classList).toContain('menu-disabled');
+      link.focus();
+      expect(document.activeElement).not.toBe(link);
+      fireEvent.click(link);
+    }
+    expect(activate).not.toHaveBeenCalled();
   });
 
   it('marks only the NavLink whose route matches', () => {

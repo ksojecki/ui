@@ -1,4 +1,10 @@
-import { cloneElement, type ButtonHTMLAttributes, type ReactElement, type ReactNode } from 'react';
+import {
+  cloneElement,
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import { NavLink, type To } from 'react-router';
 import type { ButtonSize } from '../actions/Button';
 import { joinClassNames } from '../internal/classNames';
@@ -14,7 +20,7 @@ export interface MenuProps {
 
 export interface MenuItemProps {
   /** A single link or button. The state classes are added to it. */
-  children: ReactElement<{ className?: string }>;
+  children: ReactElement<AnchorHTMLAttributes<HTMLAnchorElement> & { disabled?: boolean; to?: To }>;
   active?: boolean;
   disabled?: boolean;
 }
@@ -50,6 +56,12 @@ export function Menu({ children, className, horizontal = false, size = 'md' }: M
   );
 }
 
+function isMenuLink(children: MenuItemProps['children']) {
+  return (
+    children.type === 'a' || children.props.href !== undefined || children.props.to !== undefined
+  );
+}
+
 /** Wraps one link or button in an `li`; `active` and `disabled` mark the child. */
 export function MenuItem({ children, active = false, disabled = false }: MenuItemProps) {
   const className = joinClassNames(
@@ -57,6 +69,20 @@ export function MenuItem({ children, active = false, disabled = false }: MenuIte
     active ? 'menu-active' : undefined,
     disabled ? 'menu-disabled' : undefined,
   );
+
+  if (disabled && isMenuLink(children)) {
+    return (
+      <li>
+        <span aria-disabled="true" className={className}>
+          {children.props.children}
+        </span>
+      </li>
+    );
+  }
+
+  if (disabled) {
+    return <li>{cloneElement(children, { className, disabled: true })}</li>;
+  }
 
   return <li>{cloneElement(children, { className: className || undefined })}</li>;
 }
