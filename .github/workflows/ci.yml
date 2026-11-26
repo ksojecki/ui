@@ -25,3 +25,5 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm pack
+      - run: pnpm --filter @ksojecki/ui-showcase typecheck
+      - run: pnpm --filter @ksojecki/ui-showcase build
