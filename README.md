@@ -10,7 +10,7 @@ The package is not published yet. To try it, build and pack this repository, the
 pnpm add /path/to/ksojecki-platform-ui-0.0.1.tgz react react-dom react-router daisyui tailwindcss
 ```
 
-Peer dependencies: `react` and `react-dom` ^19, `react-router` ^8, `daisyui` ^5, `tailwindcss` ^4. The package is ESM only. `FormField` takes the result of react-hook-form's `register()` but does not depend on that package.
+Peer dependencies: `react` and `react-dom` ^19, `react-router` ^8, `daisyui` ^5.6.0, `tailwindcss` ^4. The package is ESM only. `FormField` takes the result of react-hook-form's `register()` but does not depend on that package.
 
 ## Set up styles
 
