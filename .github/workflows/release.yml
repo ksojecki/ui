@@ -36,7 +36,11 @@ jobs:
       - name: Publish library
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
         run: |
           export NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/github-packages.npmrc"
           printf '%s\n' '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' > "$NPM_CONFIG_USERCONFIG"
-          npm publish
+          case "${TAG%%+*}" in
+            *-*) npm publish --tag next ;;
+            *) npm publish ;;
+          esac
