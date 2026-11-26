@@ -27,3 +27,18 @@ jobs:
       - run: pnpm pack
       - run: pnpm --filter @ksojecki/ui-showcase typecheck
       - run: pnpm --filter @ksojecki/ui-showcase build
+
+  deploy-preview:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Redeploy sojecki.pl/ui
+        env:
+          DEPLOY_HOOK: ${{ secrets.SOJECKI_PL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo 'SOJECKI_PL_DEPLOY_HOOK is not set; skipping the sojecki.pl redeploy.'
+            exit 0
+          fi
+          curl -fsS -X POST "$DEPLOY_HOOK" > /dev/null
