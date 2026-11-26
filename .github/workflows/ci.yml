@@ -26,7 +26,12 @@ jobs:
       - run: pnpm build
       - run: pnpm pack
       - run: pnpm --filter @ksojecki/ui-showcase typecheck
-      - run: pnpm --filter @ksojecki/ui-showcase build
+      - name: Build showcase for sojecki.pl/ui
+        env:
+          SHOWCASE_BASE: /ui/
+        run: |
+          pnpm --filter @ksojecki/ui-showcase build
+          grep -q 'src="/ui/assets/' showcase/dist/index.html
 
   deploy-preview:
     needs: validate
