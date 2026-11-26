@@ -63,7 +63,12 @@ function ToneMatrix() {
 
 export function ActionsSection() {
   return (
-    <Section description="@ksojecki/platform-ui/actions" id="actions" title="Actions">
+    <Section
+      appearance="plain"
+      description="@ksojecki/platform-ui/actions"
+      id="actions"
+      title="Actions"
+    >
       <div className="flex flex-col gap-6">
         <Specimen title="Tone x variant x size on the page canvas (base-200)">
           <ToneMatrix />
