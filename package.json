@@ -1,0 +1,117 @@
+{
+  "name": "@ksojecki/platform-ui",
+  "version": "0.0.1",
+  "description": "React UI components and daisyUI themes with semantic purpose props.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksojecki/ui.git"
+  },
+  "files": [
+    "dist",
+    "assets",
+    "theme.css",
+    "themes",
+    "styles",
+    "LICENSE",
+    "!**/*.tsbuildinfo"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./theme.css": "./theme.css",
+    "./themes/*.css": "./themes/*.css",
+    "./styles/*.css": "./styles/*.css",
+    "./actions": {
+      "types": "./dist/actions/index.d.ts",
+      "import": "./dist/actions/index.js",
+      "default": "./dist/actions/index.js"
+    },
+    "./data": {
+      "types": "./dist/data/index.d.ts",
+      "import": "./dist/data/index.js",
+      "default": "./dist/data/index.js"
+    },
+    "./feedback": {
+      "types": "./dist/feedback/index.d.ts",
+      "import": "./dist/feedback/index.js",
+      "default": "./dist/feedback/index.js"
+    },
+    "./forms": {
+      "types": "./dist/forms/index.d.ts",
+      "import": "./dist/forms/index.js",
+      "default": "./dist/forms/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js",
+      "default": "./dist/icons/index.js"
+    },
+    "./layout": {
+      "types": "./dist/layout/index.d.ts",
+      "import": "./dist/layout/index.js",
+      "default": "./dist/layout/index.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
+      "import": "./dist/navigation/index.js",
+      "default": "./dist/navigation/index.js"
+    },
+    "./overlays": {
+      "types": "./dist/overlays/index.d.ts",
+      "import": "./dist/overlays/index.js",
+      "default": "./dist/overlays/index.js"
+    },
+    "./typography": {
+      "types": "./dist/typography/index.d.ts",
+      "import": "./dist/typography/index.js",
+      "default": "./dist/typography/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.lib.json",
+    "dev:ui-showcase": "pnpm --filter @ksojecki/ui-showcase dev",
+    "format": "oxfmt --write",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint src vite.config.mts showcase/src showcase/vite.config.mts",
+    "typecheck": "tsc --noEmit -p tsconfig.lib.json && tsc --noEmit -p tsconfig.spec.json",
+    "test": "vitest run --config vite.config.mts"
+  },
+  "dependencies": {
+    "cally": "0.9.2",
+    "react-icons": "^5.7.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "daisyui": "5.8.1",
+    "jsdom": "31.0.1",
+    "oxfmt": "0.79.0",
+    "oxlint": "1.94.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-hook-form": "7.92.0",
+    "react-router": "8.5.2",
+    "tailwindcss": "4.3.5",
+    "tslib": "2.9.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
+  },
+  "peerDependencies": {
+    "daisyui": "^5.6.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^8.4.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "packageManager": "pnpm@12.16.1"
+}

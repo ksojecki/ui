@@ -1,0 +1,9 @@
+/* One-line setup: `@import '@ksojecki/platform-ui/styles/traffic.css';` after `@import 'tailwindcss';`. */
+@plugin 'daisyui' {
+  themes: false;
+}
+
+@import '../theme.css';
+@import '../themes/traffic.css';
+
+@source '../dist';
