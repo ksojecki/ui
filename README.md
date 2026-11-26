@@ -8,6 +8,11 @@ The package is distributed through GitHub Packages. Add the scope to your projec
 
 ```ini
 @ksojecki:registry=https://npm.pkg.github.com
+```
+
+Add the token reference to your user `~/.npmrc`:
+
+```ini
 //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 ```
 

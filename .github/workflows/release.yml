@@ -18,7 +18,7 @@ jobs:
           persist-credentials: false
       - uses: pnpm/setup@v3
         with:
-          runtime: node@26.10.0
+          runtime: node@26.13.1
           cache: true
           install: false
       - name: Verify tag and branch
