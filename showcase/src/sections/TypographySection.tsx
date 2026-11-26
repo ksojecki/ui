@@ -1,12 +1,12 @@
-import { Section } from '@ksojecki/platform-ui/layout';
-import { Heading, Paragraph, type HeadingLevel } from '@ksojecki/platform-ui/typography';
+import { Section } from '@ksojecki/ui/layout';
+import { Heading, Paragraph, type HeadingLevel } from '@ksojecki/ui/typography';
 import { Specimen } from '../Specimen';
 
 const LEVELS: HeadingLevel[] = [1, 2, 3, 4];
 
 export function TypographySection() {
   return (
-    <Section description="@ksojecki/platform-ui/typography" id="typography" title="Typography">
+    <Section description="@ksojecki/ui/typography" id="typography" title="Typography">
       <div className="flex flex-col gap-4">
         <Specimen title="Heading levels">
           <div className="flex flex-col gap-1">

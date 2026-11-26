@@ -5,7 +5,7 @@
     "lib": ["dom", "dom.iterable", "es2022"],
     "types": ["vite/client"],
     "paths": {
-      "@ksojecki/platform-ui/*": ["../src/*/index.ts"]
+      "@ksojecki/ui/*": ["../src/*/index.ts"]
     },
     "module": "esnext",
     "moduleResolution": "bundler"

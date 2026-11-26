@@ -1,4 +1,4 @@
-/* One-line setup: `@import '@ksojecki/platform-ui/styles/budget.css';` after `@import 'tailwindcss';`. */
+/* One-line setup: `@import '@ksojecki/ui/styles/budget.css';` after `@import 'tailwindcss';`. */
 @plugin 'daisyui' {
   themes: false;
 }

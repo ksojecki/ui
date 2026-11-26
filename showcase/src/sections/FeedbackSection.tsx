@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@ksojecki/platform-ui/actions';
+import { Button } from '@ksojecki/ui/actions';
 import {
   Alert,
   Badge,
@@ -12,8 +12,8 @@ import {
   Tooltip,
   type BadgePurpose,
   type StatusPurpose,
-} from '@ksojecki/platform-ui/feedback';
-import { Section } from '@ksojecki/platform-ui/layout';
+} from '@ksojecki/ui/feedback';
+import { Section } from '@ksojecki/ui/layout';
 import { Specimen } from '../Specimen';
 
 const STATUSES: StatusPurpose[] = ['info', 'success', 'warning', 'error'];
@@ -23,7 +23,7 @@ export function FeedbackSection() {
   const [toasts, setToasts] = useState<number[]>([]);
 
   return (
-    <Section description="@ksojecki/platform-ui/feedback" id="feedback" title="Feedback">
+    <Section description="@ksojecki/ui/feedback" id="feedback" title="Feedback">
       <div className="flex flex-col gap-6">
         <Specimen title="Alert (solid and soft)">
           <div className="flex w-full flex-col gap-2">

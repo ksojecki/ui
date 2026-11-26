@@ -18,9 +18,9 @@ import {
   Switch,
   Textarea,
   TimePicker,
-} from '@ksojecki/platform-ui/forms';
-import { Button } from '@ksojecki/platform-ui/actions';
-import { Section } from '@ksojecki/platform-ui/layout';
+} from '@ksojecki/ui/forms';
+import { Button } from '@ksojecki/ui/actions';
+import { Section } from '@ksojecki/ui/layout';
 import { Specimen } from '../Specimen';
 
 function TextControls() {
@@ -160,7 +160,7 @@ function FilterAndActions() {
 
 export function FormsSection() {
   return (
-    <Section description="@ksojecki/platform-ui/forms" id="forms" title="Forms">
+    <Section description="@ksojecki/ui/forms" id="forms" title="Forms">
       <div className="grid gap-6 md:grid-cols-2">
         <TextControls />
         <ChoiceControls />

@@ -13,7 +13,7 @@ import { PageHeader } from './layout/PageHeader';
 import { Paragraph } from './typography/Paragraph';
 import { Section } from './layout/Section';
 
-describe('@ksojecki/platform-ui', () => {
+describe('@ksojecki/ui', () => {
   it('passes a title to the heading for hover text on truncated labels', () => {
     render(
       <Heading level={5} title="Full account name">

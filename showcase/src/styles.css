@@ -4,10 +4,10 @@
   themes: false;
 }
 
-@import '@ksojecki/platform-ui/theme.css';
-@import '@ksojecki/platform-ui/themes/budget.css';
-@import '@ksojecki/platform-ui/themes/traffic.css';
-@import '@ksojecki/platform-ui/themes/roadsign.css';
-@import '@ksojecki/platform-ui/themes/generic.css';
+@import '@ksojecki/ui/theme.css';
+@import '@ksojecki/ui/themes/budget.css';
+@import '@ksojecki/ui/themes/traffic.css';
+@import '@ksojecki/ui/themes/roadsign.css';
+@import '@ksojecki/ui/themes/generic.css';
 
 @source '../../src';
