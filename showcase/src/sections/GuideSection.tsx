@@ -3,8 +3,12 @@ import { Section } from '@ksojecki/ui/layout';
 import { Prose } from '@ksojecki/ui/typography';
 import readme from '../../../README.md?raw';
 
-// Consumer-facing part of the README: everything between the title and the License heading.
-const guide = readme.slice(readme.indexOf('\n'), readme.indexOf('\n## License')).trim();
+// Consumer-facing part of the README: everything between the title and the License heading,
+// with its headings moved one level down to nest under the section title.
+const guide = readme
+  .slice(readme.indexOf('\n'), readme.indexOf('\n## License'))
+  .trim()
+  .replace(/^(#{2,5}) /gm, '#$1 ');
 const html = marked.parse(guide, { async: false });
 
 export function GuideSection() {
