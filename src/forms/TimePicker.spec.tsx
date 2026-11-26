@@ -2,6 +2,21 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 import { TimePicker } from './TimePicker';
 
+function ControlledPicker() {
+  const [value, setValue] = useState('08:15');
+  return (
+    <TimePicker
+      changeHourLabel="Change hour"
+      id="time"
+      label="Time"
+      onChange={setValue}
+      selectHourLabel="Select hour"
+      selectMinuteLabel="Select minute"
+      value={value}
+    />
+  );
+}
+
 function renderPicker(props: Partial<Parameters<typeof TimePicker>[0]> = {}) {
   const onChange = vi.fn<(value: string) => void>();
   render(
@@ -31,28 +46,13 @@ describe('TimePicker', () => {
   });
 
   it('includes the selected time in the accessible name after changing it', () => {
-    function ControlledPicker() {
-      const [value, setValue] = useState('08:15');
-      return (
-        <TimePicker
-          changeHourLabel="Change hour"
-          id="time"
-          label="Time"
-          onChange={setValue}
-          selectHourLabel="Select hour"
-          selectMinuteLabel="Select minute"
-          value={value}
-        />
-      );
-    }
-
     render(<ControlledPicker />);
     const trigger = screen.getByRole('button', { name: 'Time, 08:15' });
     fireEvent.click(trigger);
     fireEvent.click(screen.getByRole('button', { hidden: true, name: '09' }));
     fireEvent.click(screen.getByRole('button', { hidden: true, name: '30' }));
 
-    expect(trigger).toHaveAccessibleName('Time, 09:30');
+    expect(screen.getByRole('button', { name: 'Time, 09:30' })).toBe(trigger);
   });
 
   it('offers no hours or minutes after max', () => {
