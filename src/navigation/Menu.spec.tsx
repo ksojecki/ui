@@ -78,21 +78,23 @@ describe('Menu', () => {
       <MemoryRouter>
         <Menu>
           <MenuItem disabled>
-            <a href="/collection" onClick={activate}>
+            <a aria-label="Native collection" href="/collection" onClick={activate} title="Details">
               Native
             </a>
           </MenuItem>
           <MenuItem disabled>
-            <Link onClick={activate} to="/collection">
-              Router
+            <Link aria-labelledby="router-label" onClick={activate} to="/collection">
+              <span id="router-label">Router collection</span>
             </Link>
           </MenuItem>
         </Menu>
       </MemoryRouter>,
     );
 
-    expect(screen.queryByRole('link')).toBeNull();
-    const links = [screen.getByText('Native'), screen.getByText('Router')];
+    const native = screen.getByRole('link', { name: 'Native collection' });
+    expect(native.getAttribute('title')).toBe('Details');
+    const router = screen.getByRole('link', { name: 'Router collection' });
+    const links = [native, router];
     for (const link of links) {
       expect(link.hasAttribute('href')).toBe(false);
       expect(link.getAttribute('aria-disabled')).toBe('true');
