@@ -236,7 +236,7 @@ importers:
 
   showcase:
     dependencies:
-      '@ksojecki/platform-ui':
+      '@ksojecki/ui':
         specifier: workspace:*
         version: link:..
       react:

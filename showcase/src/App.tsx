@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { SegmentedControl } from '@ksojecki/platform-ui/forms';
-import { Heading } from '@ksojecki/platform-ui/typography';
+import { SegmentedControl } from '@ksojecki/ui/forms';
+import { Heading } from '@ksojecki/ui/typography';
 import { PALETTES, SCHEMES, loadThemeChoice, saveThemeChoice, themeName } from './themeChoice';
 import type { Palette, Scheme } from './themeChoice';
 import { ActionsSection } from './sections/ActionsSection';

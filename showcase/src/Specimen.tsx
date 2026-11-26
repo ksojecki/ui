@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Heading } from '@ksojecki/platform-ui/typography';
+import { Heading } from '@ksojecki/ui/typography';
 
 /** A labelled group of examples inside a showcase section. */
 export function Specimen({ title, children }: { title: string; children: ReactNode }) {

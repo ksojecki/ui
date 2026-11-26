@@ -1,22 +1,15 @@
 import { useState } from 'react';
-import { Button } from '@ksojecki/platform-ui/actions';
-import {
-  BottomSheet,
-  Card,
-  Disclosure,
-  Divider,
-  PageHeader,
-  Section,
-} from '@ksojecki/platform-ui/layout';
-import { Badge } from '@ksojecki/platform-ui/feedback';
-import { Paragraph } from '@ksojecki/platform-ui/typography';
+import { Button } from '@ksojecki/ui/actions';
+import { BottomSheet, Card, Disclosure, Divider, PageHeader, Section } from '@ksojecki/ui/layout';
+import { Badge } from '@ksojecki/ui/feedback';
+import { Paragraph } from '@ksojecki/ui/typography';
 import { Specimen } from '../Specimen';
 
 export function LayoutSection() {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <Section description="@ksojecki/platform-ui/layout" id="layout" title="Layout">
+    <Section description="@ksojecki/ui/layout" id="layout" title="Layout">
       <div className="flex flex-col gap-6">
         <Specimen title="Card sizes">
           {(['sm', 'md', 'lg'] as const).map((size) => (

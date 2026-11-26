@@ -1,6 +1,6 @@
 # UI showcase
 
-Preview the `@ksojecki/platform-ui` components in all four palettes: budget, traffic, roadsign, and generic. Each palette has a light and dark scheme.
+Preview the `@ksojecki/ui` components in all four palettes: budget, traffic, roadsign, and generic. Each palette has a light and dark scheme.
 
 ## Run
 

@@ -44,7 +44,7 @@ export default defineConfig(() => ({
     },
   },
   test: {
-    name: '@ksojecki/platform-ui',
+    name: '@ksojecki/ui',
     watch: false,
     fsModuleCachePath: 'node_modules/.vitest-cache',
     globals: true,

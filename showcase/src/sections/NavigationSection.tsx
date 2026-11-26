@@ -1,5 +1,5 @@
-import { Button } from '@ksojecki/platform-ui/actions';
-import { TbChevronDown } from '@ksojecki/platform-ui/icons';
+import { Button } from '@ksojecki/ui/actions';
+import { TbChevronDown } from '@ksojecki/ui/icons';
 import {
   Dropdown,
   Link,
@@ -11,8 +11,8 @@ import {
   NavMenu,
   NavMenuColumn,
   NavMenuItem,
-} from '@ksojecki/platform-ui/navigation';
-import { Section } from '@ksojecki/platform-ui/layout';
+} from '@ksojecki/ui/navigation';
+import { Section } from '@ksojecki/ui/layout';
 import { Specimen } from '../Specimen';
 
 function NavbarStrip() {
@@ -53,7 +53,7 @@ function NavbarStrip() {
 
 export function NavigationSection() {
   return (
-    <Section description="@ksojecki/platform-ui/navigation" id="navigation" title="Navigation">
+    <Section description="@ksojecki/ui/navigation" id="navigation" title="Navigation">
       <div className="flex flex-col gap-6">
         <Specimen title="Link (plain, tones, asButton)">
           <Link to="/items">Plain link</Link>

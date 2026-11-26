@@ -1,4 +1,4 @@
-import { Section } from '@ksojecki/platform-ui/layout';
+import { Section } from '@ksojecki/ui/layout';
 import {
   TbAlertTriangle,
   TbArrowRight,
@@ -12,7 +12,7 @@ import {
   TbSearch,
   TbTrash,
   TbX,
-} from '@ksojecki/platform-ui/icons';
+} from '@ksojecki/ui/icons';
 
 // A sample, not the full set: the subpath exports every Tabler icon.
 const SAMPLE_ICONS = {
@@ -33,7 +33,7 @@ const SAMPLE_ICONS = {
 export function IconsSection() {
   return (
     <Section
-      description="@ksojecki/platform-ui/icons exports every Tabler icon. A sample:"
+      description="@ksojecki/ui/icons exports every Tabler icon. A sample:"
       id="icons"
       title="Icons"
     >

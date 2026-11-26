@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
-import { Button } from '@ksojecki/platform-ui/actions';
-import { Section } from '@ksojecki/platform-ui/layout';
+import { Button } from '@ksojecki/ui/actions';
+import { Section } from '@ksojecki/ui/layout';
 import {
   ConsentSettings,
   ModalWindow,
   NativeDialog,
   type ModalWindowApi,
-} from '@ksojecki/platform-ui/overlays';
-import { Paragraph } from '@ksojecki/platform-ui/typography';
+} from '@ksojecki/ui/overlays';
+import { Paragraph } from '@ksojecki/ui/typography';
 import { Specimen } from '../Specimen';
 
 export function OverlaysSection() {
@@ -16,7 +16,7 @@ export function OverlaysSection() {
   const [consentOpen, setConsentOpen] = useState(false);
 
   return (
-    <Section description="@ksojecki/platform-ui/overlays" id="overlays" title="Overlays">
+    <Section description="@ksojecki/ui/overlays" id="overlays" title="Overlays">
       <Specimen title="ModalWindow / NativeDialog">
         <Button onClick={() => modal.current?.show()}>Open ModalWindow</Button>
         <Button onClick={() => dialog.current?.show()} tone="neutral">

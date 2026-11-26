@@ -9,9 +9,9 @@ import {
   type ButtonSize,
   type ButtonTone,
   type ButtonVariant,
-} from '@ksojecki/platform-ui/actions';
-import { Card, Section } from '@ksojecki/platform-ui/layout';
-import { TbPlus, TbSearch } from '@ksojecki/platform-ui/icons';
+} from '@ksojecki/ui/actions';
+import { Card, Section } from '@ksojecki/ui/layout';
+import { TbPlus, TbSearch } from '@ksojecki/ui/icons';
 import { Specimen } from '../Specimen';
 
 const TONES: ButtonTone[] = [
@@ -63,12 +63,7 @@ function ToneMatrix() {
 
 export function ActionsSection() {
   return (
-    <Section
-      appearance="plain"
-      description="@ksojecki/platform-ui/actions"
-      id="actions"
-      title="Actions"
-    >
+    <Section appearance="plain" description="@ksojecki/ui/actions" id="actions" title="Actions">
       <div className="flex flex-col gap-6">
         <Specimen title="Tone x variant x size on the page canvas (base-200)">
           <ToneMatrix />

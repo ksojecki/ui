@@ -1,4 +1,4 @@
-# @ksojecki/platform-ui
+# @ksojecki/ui
 
 React components and daisyUI themes with semantic `purpose` props: buttons, forms, tables, feedback, navigation, overlays and page layout.
 
@@ -19,7 +19,7 @@ Add the token reference to your user `~/.npmrc`:
 Set `NODE_AUTH_TOKEN` to a GitHub personal access token (classic) with `read:packages` and access to the package. In GitHub Actions, you can use `GITHUB_TOKEN` with `packages: read` if the package grants the workflow repository access.
 
 ```sh
-pnpm add @ksojecki/platform-ui react react-dom react-router daisyui tailwindcss
+pnpm add @ksojecki/ui react react-dom react-router daisyui tailwindcss
 ```
 
 Peer dependencies: `react` and `react-dom` ^19, `react-router` ^8, `daisyui` ^5.6.0, `tailwindcss` ^4. The package is ESM only. `FormField` takes the result of react-hook-form's `register()` but does not depend on that package.
@@ -30,22 +30,22 @@ In your app's main stylesheet, import Tailwind, then one palette entry:
 
 ```css
 @import 'tailwindcss';
-@import '@ksojecki/platform-ui/styles/generic.css';
+@import '@ksojecki/ui/styles/generic.css';
 ```
 
 Each entry loads daisyUI with its built-in themes off, the shared rules from `theme.css` (including the Karla font and motion utilities), one palette, and a Tailwind `@source` for the built components, so their classes are generated.
 
 Palettes: `generic`, `budget`, `traffic`, `roadsign`. Each defines a light theme `<name>` and a dark theme `<name>-dark`. With no `data-theme` on `<html>`, the OS colour scheme decides. Set `data-theme="<name>"` or `"<name>-dark"` to force one. Use exactly one entry.
 
-To compose the pieces yourself, import `@ksojecki/platform-ui/theme.css` and one `@ksojecki/platform-ui/themes/<name>.css` after `@plugin 'daisyui' { themes: false; }`, and add `@source '../node_modules/@ksojecki/platform-ui/dist';`.
+To compose the pieces yourself, import `@ksojecki/ui/theme.css` and one `@ksojecki/ui/themes/<name>.css` after `@plugin 'daisyui' { themes: false; }`, and add `@source '../node_modules/@ksojecki/ui/dist';`.
 
 ## Use
 
 Import from a group subpath, never from the package root.
 
 ```tsx
-import { Button } from '@ksojecki/platform-ui/actions';
-import { Alert } from '@ksojecki/platform-ui/feedback';
+import { Button } from '@ksojecki/ui/actions';
+import { Alert } from '@ksojecki/ui/feedback';
 
 export function Example() {
   return (
@@ -65,7 +65,7 @@ Choose a `purpose` (`ActionPurpose`, `StatusPurpose`, `BadgePurpose`), not a col
 
 ## Icons
 
-`@ksojecki/platform-ui/icons` re-exports the whole [Tabler icon set](https://react-icons.github.io/react-icons/icons/tb/) from `react-icons/tb` (`TbPlus`, `TbTrash`, `TbBrandGoogle`, and the rest) plus the `IconType` type. `react-icons` is external and the package marks its JavaScript as side-effect free, so a bundler keeps only the icons you import. Import by name; do not use `import * as icons`, which pulls in all of them.
+`@ksojecki/ui/icons` re-exports the whole [Tabler icon set](https://react-icons.github.io/react-icons/icons/tb/) from `react-icons/tb` (`TbPlus`, `TbTrash`, `TbBrandGoogle`, and the rest) plus the `IconType` type. `react-icons` is external and the package marks its JavaScript as side-effect free, so a bundler keeps only the icons you import. Import by name; do not use `import * as icons`, which pulls in all of them.
 
 ## Components
 
@@ -107,4 +107,4 @@ Vite builds the ESM entry points, and TypeScript emits the declarations alongsid
 
 Update the version in `package.json` through a PR. After it merges, tag the versioned commit on `main` as `v<version>` and push that tag. The release workflow rejects a mismatched tag or a commit outside `main`, builds the library, and publishes to GitHub Packages. Pushing to `main` alone does not publish.
 
-For the first release, wait for the standalone library and release workflow to merge before pushing `v0.1.0`. Grant consuming repositories Actions read access in the package settings before switching their dependencies.
+Grant consuming repositories Actions read access in the `@ksojecki/ui` package settings before switching their dependencies.

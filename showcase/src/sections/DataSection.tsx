@@ -1,6 +1,6 @@
-import { DataTable, Metric, MetricGroup, Table } from '@ksojecki/platform-ui/data';
-import { Badge } from '@ksojecki/platform-ui/feedback';
-import { Section } from '@ksojecki/platform-ui/layout';
+import { DataTable, Metric, MetricGroup, Table } from '@ksojecki/ui/data';
+import { Badge } from '@ksojecki/ui/feedback';
+import { Section } from '@ksojecki/ui/layout';
 import { Specimen } from '../Specimen';
 
 const ROWS = [
@@ -11,7 +11,7 @@ const ROWS = [
 
 export function DataSection() {
   return (
-    <Section description="@ksojecki/platform-ui/data" id="data" title="Data">
+    <Section description="@ksojecki/ui/data" id="data" title="Data">
       <div className="flex flex-col gap-6">
         <Specimen title="Table (zebra)">
           <div className="w-full">
