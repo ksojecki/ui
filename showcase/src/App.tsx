@@ -7,6 +7,7 @@ import { ActionsSection } from './sections/ActionsSection';
 import { DataSection } from './sections/DataSection';
 import { FeedbackSection } from './sections/FeedbackSection';
 import { FormsSection } from './sections/FormsSection';
+import { GuideSection } from './sections/GuideSection';
 import { IconsSection } from './sections/IconsSection';
 import { LayoutSection } from './sections/LayoutSection';
 import { NavigationSection } from './sections/NavigationSection';
@@ -14,6 +15,7 @@ import { OverlaysSection } from './sections/OverlaysSection';
 import { TypographySection } from './sections/TypographySection';
 
 const SECTIONS = [
+  { id: 'guide', label: 'Guide', Component: GuideSection },
   { id: 'actions', label: 'Actions', Component: ActionsSection },
   { id: 'forms', label: 'Forms', Component: FormsSection },
   { id: 'feedback', label: 'Feedback', Component: FeedbackSection },

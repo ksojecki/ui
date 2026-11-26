@@ -11,3 +11,27 @@
 @import '@ksojecki/ui/themes/generic.css';
 
 @source '../../src';
+
+.guide code {
+  border-radius: var(--radius-field);
+  background: var(--color-base-300);
+  padding: 0.1em 0.3em;
+  font-size: 0.875em;
+}
+
+.guide pre {
+  overflow-x: auto;
+  border-radius: var(--radius-box);
+  background: var(--color-base-300);
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+.guide pre code {
+  background: none;
+  padding: 0;
+}
+
+.guide a {
+  text-decoration: underline;
+}
