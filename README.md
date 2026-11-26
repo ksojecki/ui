@@ -4,10 +4,22 @@ React components and daisyUI themes with semantic `purpose` props: buttons, form
 
 ## Install
 
-The package is not published yet. To try it, build and pack this repository, then install the archive in your app:
+The package is distributed through GitHub Packages. Add the scope to your project's `.npmrc`:
+
+```ini
+@ksojecki:registry=https://npm.pkg.github.com
+```
+
+Add the token reference to your user `~/.npmrc`:
+
+```ini
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
+Set `NODE_AUTH_TOKEN` to a GitHub personal access token (classic) with `read:packages` and access to the package. In GitHub Actions, you can use `GITHUB_TOKEN` with `packages: read` if the package grants the workflow repository access.
 
 ```sh
-pnpm add /path/to/ksojecki-platform-ui-0.0.1.tgz react react-dom react-router daisyui tailwindcss
+pnpm add @ksojecki/platform-ui react react-dom react-router daisyui tailwindcss
 ```
 
 Peer dependencies: `react` and `react-dom` ^19, `react-router` ^8, `daisyui` ^5.6.0, `tailwindcss` ^4. The package is ESM only. `FormField` takes the result of react-hook-form's `register()` but does not depend on that package.
@@ -90,3 +102,9 @@ pnpm pack
 ```
 
 Vite builds the ESM entry points, and TypeScript emits the declarations alongside them in `dist/`. Specs run in Vitest with jsdom. See [AGENTS.md](./AGENTS.md) for contribution conventions.
+
+## Releases
+
+Update the version in `package.json` through a PR. After it merges, tag the versioned commit on `main` as `v<version>` and push that tag. The release workflow rejects a mismatched tag or a commit outside `main`, builds the library, and publishes to GitHub Packages. Pushing to `main` alone does not publish.
+
+For the first release, wait for the standalone library and release workflow to merge before pushing `v0.1.0`. Grant consuming repositories Actions read access in the package settings before switching their dependencies.
