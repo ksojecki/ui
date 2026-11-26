@@ -1,0 +1,9 @@
+/* One-line setup: `@import '@ksojecki/platform-ui/styles/roadsign.css';` after `@import 'tailwindcss';`. */
+@plugin 'daisyui' {
+  themes: false;
+}
+
+@import '../theme.css';
+@import '../themes/roadsign.css';
+
+@source '../dist';

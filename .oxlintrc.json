@@ -1,0 +1,129 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "unicorn",
+    "typescript",
+    "oxc",
+    "import",
+    "react",
+    "jsx-a11y",
+    "vitest",
+    "promise",
+    "node"
+  ],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "options": {
+    "reportUnusedDisableDirectives": "error"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "19.2.5"
+    }
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/test-output/**",
+    "**/vite.config.*.timestamp*",
+    "**/vitest.config.*.timestamp*"
+  ],
+  "rules": {
+    "eslint/curly": "error",
+    "eslint/eqeqeq": "error",
+    "no-console": "error",
+    "no-debugger": "error",
+    "no-await-in-loop": "error",
+    "eslint/no-warning-comments": [
+      "error",
+      {
+        "terms": ["oxlint-disable", "eslint-disable"],
+        "location": "anywhere"
+      }
+    ],
+    "eslint/no-shadow": "error",
+    "complexity": ["error", 10],
+    "max-depth": ["error", 3],
+    "max-lines-per-function": ["error", 80],
+    "max-statements": ["error", 12],
+    "eslint/max-lines": [
+      "error",
+      {
+        "max": 300,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "eslint/no-underscore-dangle": "error",
+    "eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "eslint/no-var": "error",
+    "eslint/prefer-const": "error",
+    "import/no-duplicates": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-unassigned-import": [
+      "error",
+      {
+        "allow": ["**/*.css", "@testing-library/jest-dom/vitest"]
+      }
+    ],
+    "oxc/no-this-in-exported-function": "error",
+    "react/react-in-jsx-scope": "off",
+    "typescript/consistent-type-imports": "error",
+    "typescript/consistent-return": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/prefer-string-starts-ends-with": "error",
+    "typescript/no-unsafe-type-assertion": "error",
+    "unicorn/consistent-function-scoping": "error",
+    "unicorn/explicit-length-check": "error",
+    "unicorn/no-empty-file": "error",
+    "unicorn/prefer-node-protocol": "error",
+    "react/exhaustive-deps": "error",
+    "react/rules-of-hooks": "error",
+    "react/self-closing-comp": "error",
+    "jsx_a11y/alt-text": "error",
+    "jsx_a11y/anchor-is-valid": "error",
+    "jsx_a11y/no-noninteractive-tabindex": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.{spec,test}.{ts,tsx,mts,cts}",
+        "**/*.{spec,test}.helpers.{ts,tsx,mts,cts}",
+        "**/*.test-utils.{ts,tsx,mts,cts}",
+        "**/test-helpers.{ts,tsx,mts,cts}",
+        "**/test-setup.{ts,tsx,mts,cts}"
+      ],
+      "rules": {
+        "max-lines-per-function": ["off"],
+        "max-statements": ["off"],
+        "complexity": ["off"],
+        "max-depth": ["off"]
+      },
+      "env": {
+        "vitest": true
+      }
+    },
+    {
+      "files": ["src/overlays/ModalWindow/ModalWindow.tsx"],
+      "rules": {
+        "react/immutability": "off"
+      }
+    }
+  ]
+}

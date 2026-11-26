@@ -1,0 +1,103 @@
+/* budget palette: light plus budget-dark, which follows the OS when no data-theme is set. */
+
+@plugin "daisyui/theme" {
+  name: 'budget';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: #334756;
+  --color-primary-content: #f8f3e8;
+  --color-secondary: #b25a4d;
+  --color-secondary-content: #ffffff;
+  --color-accent: #537a61;
+  --color-accent-content: #fffaf2;
+  --color-neutral: #2c302c;
+  --color-neutral-content: #f8f3e8;
+  --color-info: #52728d;
+  --color-info-content: #fffaf2;
+  --color-success: #537a61;
+  --color-success-content: #fffaf2;
+  --color-warning: #c49a46;
+  --color-warning-content: #30281b;
+  --color-error: #b45347;
+  --color-error-content: #fffaf2;
+  --color-base-100: #faf7ef;
+  --color-base-200: #f2ede1;
+  --color-base-300: #ddd3c1;
+  --color-base-content: #292b28;
+
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+
+  --paper-dark: #e5dccb;
+  --paper-border: #c9bda8;
+  --ink-muted: #6a655a;
+  --navbar-bg: #334756;
+  --navbar-content: #f8f3e8;
+  --control-border: #908879;
+  --soft-ink-share: 50%;
+  --paper-shadow: 0 1px 0 rgb(68 56 38 / 0.08), 0 3px 10px rgb(68 56 38 / 0.035);
+  --elevation-1: 0 1px 2px rgb(68 56 38 / 0.08);
+  --elevation-2: 0 2px 4px rgb(68 56 38 / 0.06), 0 6px 14px rgb(68 56 38 / 0.08);
+  --elevation-3: 0 8px 12px -4px rgb(68 56 38 / 0.1), 0 20px 28px -8px rgb(68 56 38 / 0.14);
+  --surface-highlight: rgb(255 255 255 / 0.5);
+}
+
+@plugin "daisyui/theme" {
+  name: 'budget-dark';
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-primary: #8fb0c7;
+  --color-primary-content: #14202a;
+  --color-secondary: #d9897c;
+  --color-secondary-content: #2a1210;
+  --color-accent: #86b596;
+  --color-accent-content: #12231a;
+  --color-neutral: #cfc7b6;
+  --color-neutral-content: #1f1d19;
+  --color-info: #7ea6c4;
+  --color-info-content: #10202c;
+  --color-success: #7fb591;
+  --color-success-content: #10241a;
+  --color-warning: #d9b160;
+  --color-warning-content: #2a2010;
+  --color-error: #e08a7c;
+  --color-error-content: #2c1210;
+  --color-base-100: #24221e;
+  --color-base-200: #1b1a17;
+  --color-base-300: #34312b;
+  --color-base-content: #ebe5d8;
+
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+
+  --paper-dark: #3f3c35;
+  --paper-border: #4a463d;
+  --ink-muted: #a69f90;
+  --navbar-bg: #0f1a22;
+  --navbar-content: #f1ebdc;
+  --control-border: #736e62;
+  --soft-ink-share: 100%;
+  --paper-shadow: 0 1px 0 rgb(0 0 0 / 0.2), 0 3px 10px rgb(0 0 0 / 0.088);
+  --elevation-1: 0 1px 2px rgb(0 0 0 / 0.2);
+  --elevation-2: 0 2px 4px rgb(0 0 0 / 0.15), 0 6px 14px rgb(0 0 0 / 0.2);
+  --elevation-3: 0 8px 12px -4px rgb(0 0 0 / 0.25), 0 20px 28px -8px rgb(0 0 0 / 0.35);
+  --surface-highlight: rgb(255 255 255 / 0.04);
+  /* Read by `--overlay-backdrop` in theme.css. */
+  --overlay-scrim: rgb(0 0 0 / 0.5);
+}
