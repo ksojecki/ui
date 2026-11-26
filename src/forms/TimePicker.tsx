@@ -118,7 +118,7 @@ export function TimePicker({
       trigger={value}
       triggerClassName="w-full justify-start"
       triggerId={id}
-      triggerLabel={label}
+      triggerLabel={value ? `${label}, ${value}` : label}
       triggerSize="sm"
     >
       {draftHour === null ? (

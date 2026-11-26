@@ -24,7 +24,7 @@ export interface DropdownProps {
   trigger: ReactNode;
   /** Extra trigger classes, such as a text colour for a coloured header. */
   triggerClassName?: string;
-  /** `aria-label` for icon-only triggers. */
+  /** Accessible name for the trigger; include any visible trigger text. */
   triggerLabel?: string;
   /** Id of the trigger button, for a `<label htmlFor>`. */
   triggerId?: string;
