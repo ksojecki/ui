@@ -1,0 +1,105 @@
+---
+import type { MarkdownHeading } from 'astro';
+import pkg from '../../../package.json';
+import SidebarNav from '../components/SidebarNav.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher';
+import { navigation } from '../lib/nav';
+import { REPOSITORY_URL, docsHref } from '../lib/paths';
+import { STORAGE_KEY } from '../lib/themeChoice';
+import '../styles/docs.css';
+
+interface Props {
+  title: string;
+  description: string;
+  headings?: MarkdownHeading[];
+}
+
+const { title, description, headings = [] } = Astro.props;
+const sections = await navigation();
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+
+<!doctype html>
+<html lang="en" data-theme="generic" data-scheme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title === '@ksojecki/ui' ? title : `${title} · @ksojecki/ui`}</title>
+    <script is:inline define:vars={{ storageKey: STORAGE_KEY }}>
+      let choice = null;
+      try {
+        choice = JSON.parse(localStorage.getItem(storageKey) ?? 'null');
+      } catch {
+        choice = null;
+      }
+      const scheme =
+        choice?.scheme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const palette = choice?.palette ?? 'generic';
+      document.documentElement.dataset.theme = scheme === 'dark' ? `${palette}-dark` : palette;
+      document.documentElement.dataset.scheme = scheme;
+    </script>
+  </head>
+  <body>
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-field focus:bg-base-100 focus:p-2"
+      href="#content">Skip to content</a
+    >
+    <header class="navbar paper-navbar sticky top-0 z-30 min-h-14 gap-4 px-4">
+      <a class="flex items-baseline gap-2 font-bold" href={docsHref('/')}>
+        <span class="text-lg">@ksojecki/ui</span>
+        <span class="text-xs font-normal opacity-80">v{pkg.version}</span>
+      </a>
+      <nav aria-label="Site" class="hidden gap-4 text-sm sm:flex">
+        <a class="hover:underline" href={docsHref('/getting-started/')}>Get started</a>
+        <a class="hover:underline" href={docsHref('/components/')}>Components</a>
+        <a class="hover:underline" href={REPOSITORY_URL}>GitHub</a>
+      </nav>
+      <div class="ml-auto text-base-content">
+        <ThemeSwitcher client:only="react" />
+      </div>
+    </header>
+    <div
+      class="mx-auto grid max-w-screen-2xl lg:grid-cols-[16rem_minmax(0,1fr)] xl:grid-cols-[16rem_minmax(0,1fr)_14rem]"
+    >
+      <aside
+        class="border-b border-(--paper-border) bg-base-100 lg:sticky lg:top-14 lg:h-[calc(100vh-3.5rem)] lg:overflow-y-auto lg:border-r lg:border-b-0"
+      >
+        <details class="lg:hidden">
+          <summary class="cursor-pointer px-4 py-3 text-sm font-semibold">Menu</summary>
+          <SidebarNav class="px-2 pb-2" sections={sections} />
+        </details>
+        <SidebarNav class="hidden px-3 py-4 lg:block" sections={sections} />
+      </aside>
+      <main class="min-w-0 px-4 py-8 sm:px-8 lg:px-12" id="content">
+        <div class="mx-auto max-w-4xl">
+          <slot />
+        </div>
+      </main>
+      {
+        toc.length > 0 && (
+          <aside class="hidden xl:block">
+            <nav aria-label="On this page" class="sticky top-14 max-h-[calc(100vh-3.5rem)] overflow-y-auto py-8 pr-4 text-sm">
+              <p class="font-bold">On this page</p>
+              <ul class="mt-2 border-l border-(--paper-border)">
+                {toc.map((heading) => (
+                  <li>
+                    <a
+                      class:list={[
+                        'block py-1 text-(--ink-muted) hover:text-base-content',
+                        heading.depth === 3 ? 'pl-6' : 'pl-3',
+                      ]}
+                      href={`#${heading.slug}`}
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+        )
+      }
+    </div>
+  </body>
+</html>

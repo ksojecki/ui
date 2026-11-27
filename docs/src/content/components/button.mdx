@@ -1,0 +1,49 @@
+---
+title: Button
+description: Starts an action. Pick a purpose and the button gets the matching tone and variant.
+group: actions
+components: [Button, ButtonSizeProvider]
+---
+
+Use a button for an action on the current page: save a form, open a dialog, delete a row. To go to another page, use a [Link](../link/) instead.
+
+## Purposes
+
+Set `purpose` to say what the button does. The purpose picks the tone and variant, so every app shows save, delete or cancel the same way. See [Purposes](../../purposes/) for the full mapping.
+
+<Example name="button/purposes" />
+
+## Tone and variant
+
+`tone` and `variant` override the purpose. Use them only when no purpose fits, for example a toolbar of neutral toggles.
+
+<Example name="button/tones" />
+
+## Sizes
+
+`size` is `xs`, `sm`, `md` (default) or `lg`.
+
+<Example name="button/sizes" />
+
+## Icons, disabled and loading
+
+Put an icon before the label and mark it `aria-hidden`. `isLoading` shows a spinner, disables the button and sets `aria-busy`.
+
+<Example name="button/states" />
+
+## Full width
+
+`fullWidth` stretches the button to its container, for example on mobile forms.
+
+<Example name="button/full-width" />
+
+## Default size for a region
+
+`ButtonSizeProvider` sets the default size of every button and button-styled link inside it. An explicit `size` still wins.
+
+<Example name="button/size-provider" />
+
+## Accessibility
+
+- The button renders a native `<button type="button">`; pass `type="submit"` inside forms.
+- Icon-only buttons need a label: use [IconButton](../icon-button/).

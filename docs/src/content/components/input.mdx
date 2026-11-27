@@ -1,0 +1,18 @@
+---
+title: Input
+description: A single-line text field, with an optional label, hint and error.
+group: forms
+components: [Input]
+---
+
+Pass `label` to get a labelled [Field](../field/) with the hint and error wired to the input through `aria-describedby`. Every other prop goes to the native `<input>`.
+
+## Labelled
+
+<Example name="input/basic" />
+
+## Bare control
+
+Without `label` you get only the input, for toolbars and filter bars. Give it an `aria-label`. `controlSize` sets the height and `fullWidth={false}` lets it size to its content.
+
+<Example name="input/bare" />

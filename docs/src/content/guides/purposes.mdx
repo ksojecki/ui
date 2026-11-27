@@ -1,0 +1,35 @@
+---
+title: Purposes
+description: Say what a component is for and the library picks its colour and style.
+order: 3
+---
+
+Most components take a `purpose` prop instead of a colour. Apps then show save, delete or a warning the same way in every palette, and a palette can change how a purpose looks without touching the apps.
+
+<Example name="guides/purposes" />
+
+## Action purposes
+
+`ActionPurpose` is used by [Button](../components/button/), [IconButton](../components/icon-button/), [Link](../components/link/) with `asButton` and the [Dropdown](../components/dropdown/) trigger.
+
+| Purpose   | Tone      | Variant | Use for                     |
+| --------- | --------- | ------- | --------------------------- |
+| `save`    | `primary` | `solid` | Submitting a form           |
+| `confirm` | `primary` | `solid` | Confirming a step           |
+| `create`  | `primary` | `soft`  | Adding a new item           |
+| `edit`    | `neutral` | `soft`  | Opening an item for editing |
+| `delete`  | `error`   | `soft`  | Removing an item            |
+| `cancel`  | `default` | `solid` | Leaving without changes     |
+| `neutral` | `default` | `solid` | Anything else               |
+
+## Status purposes
+
+`StatusPurpose` is `info`, `success`, `warning` or `error`. It is used by [Alert](../components/alert/), [Toast](../components/toast/), [Metric](../components/metric/) and, together with `neutral`, by [Badge](../components/badge/) and [Progress](../components/progress/).
+
+```tsx
+import type { ActionPurpose, StatusPurpose } from '@ksojecki/ui/actions';
+```
+
+## Tone and variant
+
+`tone` and `variant` override the purpose. They are an escape hatch for controls with no clear purpose, such as neutral toolbar toggles. Prefer a purpose wherever one fits.

@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@import '@ksojecki/ui/theme.css';
+@import '@ksojecki/ui/themes/generic.css';
+@import '@ksojecki/ui/themes/budget.css';
+@import '@ksojecki/ui/themes/traffic.css';
+@import '@ksojecki/ui/themes/roadsign.css';
+
+@source '../../../src';
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+/* Long-form text from MDX: guides and the prose between examples. */
+.docs-prose {
+  line-height: 1.65;
+}
+
+.docs-prose > * + * {
+  margin-top: 1rem;
+}
+
+.docs-prose h2 {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.docs-prose h3 {
+  margin-top: 1.75rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.docs-prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.docs-prose ul,
+.docs-prose ol {
+  padding-left: 1.5rem;
+}
+
+.docs-prose ul {
+  list-style: disc;
+}
+
+.docs-prose ol {
+  list-style: decimal;
+}
+
+.docs-prose li + li {
+  margin-top: 0.25rem;
+}
+
+.docs-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.docs-prose th,
+.docs-prose td {
+  border-bottom: 1px solid var(--paper-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.docs-prose th {
+  font-weight: 700;
+}
+
+:where(.docs-prose, .docs-props) :not(pre) > code {
+  border-radius: var(--radius-field);
+  background: var(--color-base-300);
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
+}
+
+.docs-prose pre,
+.docs-example pre {
+  overflow-x: auto;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.docs-prose pre {
+  border: 1px solid var(--paper-border);
+  border-radius: var(--radius-box);
+}
+
+/* Shiki renders both themes; the dark one applies with the dark scheme. */
+[data-scheme='dark'] .astro-code,
+[data-scheme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.docs-nav-link[aria-current='page'] {
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  color: var(--color-base-content);
+  font-weight: 700;
+}
+
+.docs-import pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 0.5rem 0.75rem;
+}

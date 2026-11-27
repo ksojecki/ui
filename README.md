@@ -2,6 +2,8 @@
 
 React components and daisyUI themes with semantic `purpose` props: buttons, forms, tables, feedback, navigation, overlays and page layout.
 
+Documentation, with live examples and props for every component: [sojecki.pl/ui](https://sojecki.pl/ui/).
+
 ## Install
 
 The package is distributed through GitHub Packages. Add the scope to your project's `.npmrc`:
@@ -89,7 +91,7 @@ MIT
 
 Use Node 26 and pnpm 12. The repository pins their versions in `.node-version` and `package.json`.
 
-Run `pnpm install --frozen-lockfile && pnpm dev:ui-showcase`, then open [localhost:4400](http://localhost:4400). The gallery loads components from source and previews all four palettes in light and dark. It is not included in the package tarball.
+Run `pnpm install --frozen-lockfile && pnpm dev:docs`, then open [localhost:4400](http://localhost:4400). The docs site in `docs/` is built with Astro, loads components from source and previews all four palettes in light and dark. It is not included in the package tarball. `pnpm build:docs` builds it; set `DOCS_BASE=/ui/` to serve it under a path.
 
 ```sh
 pnpm install --frozen-lockfile

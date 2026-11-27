@@ -1,0 +1,65 @@
+---
+title: Get started
+description: Install the package, load a palette and render your first component.
+order: 1
+---
+
+## Install
+
+The package is published to GitHub Packages. Add the scope to your project's `.npmrc`:
+
+```ini
+@ksojecki:registry=https://npm.pkg.github.com
+```
+
+Add the token reference to your user `~/.npmrc` and set `NODE_AUTH_TOKEN` to a GitHub token with `read:packages`:
+
+```ini
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
+Then install the package and its peer dependencies:
+
+```sh
+pnpm add @ksojecki/ui react react-dom react-router daisyui tailwindcss
+```
+
+| Peer dependency      | Version |
+| -------------------- | ------- |
+| `react`, `react-dom` | ^19     |
+| `react-router`       | ^8      |
+| `daisyui`            | ^5.6.0  |
+| `tailwindcss`        | ^4      |
+
+## Load the styles
+
+In your main stylesheet, import Tailwind and one palette entry:
+
+```css
+@import 'tailwindcss';
+@import '@ksojecki/ui/styles/generic.css';
+```
+
+The entry loads daisyUI with its built-in themes off, the shared rules (including the Karla font and motion utilities), one palette, and a Tailwind `@source` for the built components. See [Theming](../theming/) for the other palettes.
+
+## Use a component
+
+Import from a group subpath, never from the package root:
+
+```tsx
+import { Button } from '@ksojecki/ui/actions';
+import { Alert } from '@ksojecki/ui/feedback';
+
+export function Example() {
+  return (
+    <>
+      <Alert purpose="success">Saved.</Alert>
+      <Button purpose="save" type="submit">
+        Save
+      </Button>
+    </>
+  );
+}
+```
+
+`Link`, `Menu`, `NavMenu` and the consent components render React Router links, so mount them inside a router.

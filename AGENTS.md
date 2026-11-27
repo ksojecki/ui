@@ -6,3 +6,4 @@
 - Do not add lint suppression comments or directories or files named `utils`, `common`, `helpers`, or `misc`.
 - Add tests alongside changed components and check keyboard and screen reader behavior.
 - Before handoff run `pnpm lint`, `pnpm format:check`, `pnpm typecheck`, `pnpm test`, `pnpm build`, and `pnpm pack`. For export or CSS changes, install the archive in a clean consumer rather than relying on source imports.
+- When you add or change a component, update its page in `docs/` (see `docs/AGENTS.md`). `tests/docs-coverage.spec.ts` fails when an exported component has no page.
