@@ -14,6 +14,16 @@ export interface SectionProps extends Omit<ComponentPropsWithoutRef<'section'>, 
   title: ReactNode;
 }
 
+/**
+ * Titled block of a page with an optional description and actions. Framed by default; `appearance="plain"` drops the frame.
+ *
+ * @example
+ * ```tsx
+ * <Section actions={<EditButton label="Edit address" />} title="Address">
+ *   <Paragraph>ul. Długa 1, Gdańsk</Paragraph>
+ * </Section>
+ * ```
+ */
 export function Section({
   actions,
   appearance = 'default',

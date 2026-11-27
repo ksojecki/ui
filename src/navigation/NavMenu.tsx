@@ -59,7 +59,20 @@ function useCloseAfterSelection(panelRef: RefObject<HTMLElement | null>) {
   }, [panelRef]);
 }
 
-/** Mobile toggle plus a horizontal megamenu on `md` and up; vertical below it. */
+/**
+ * Mobile toggle plus a horizontal megamenu on `md` and up; vertical below it.
+ *
+ * @example
+ * ```tsx
+ * <NavMenu label="Menu">
+ *   <NavMenuItem label="Reports">
+ *     <NavMenuColumn title="Sales">
+ *       <MenuNavLink to="/reports/monthly">Monthly</MenuNavLink>
+ *     </NavMenuColumn>
+ *   </NavMenuItem>
+ * </NavMenu>
+ * ```
+ */
 export function NavMenu({ children, className, label }: NavMenuProps) {
   const id = useNavMenuId('megamenu');
   const panelRef = useRef<HTMLDivElement>(null);
@@ -98,7 +111,18 @@ export function NavMenu({ children, className, label }: NavMenuProps) {
   );
 }
 
-/** Top-level megamenu button that opens its own panel; pass `NavMenuColumn`s as children. */
+/**
+ * Top-level megamenu button that opens its own panel; pass `NavMenuColumn`s as children.
+ *
+ * @example
+ * ```tsx
+ * <NavMenuItem label="Reports">
+ *   <NavMenuColumn title="Sales">
+ *     <MenuNavLink to="/reports/monthly">Monthly</MenuNavLink>
+ *   </NavMenuColumn>
+ * </NavMenuItem>
+ * ```
+ */
 export function NavMenuItem({ children, label }: NavMenuItemProps) {
   const id = useNavMenuId('megamenu-item');
   const panelRef = useRef<HTMLDivElement>(null);
@@ -136,7 +160,17 @@ export function NavMenuItem({ children, label }: NavMenuItemProps) {
   );
 }
 
-/** One column of links inside a `NavMenuItem` panel. */
+/**
+ * One column of links inside a `NavMenuItem` panel.
+ *
+ * @example
+ * ```tsx
+ * <NavMenuColumn title="Sales">
+ *   <MenuNavLink to="/reports/monthly">Monthly</MenuNavLink>
+ *   <MenuNavLink to="/reports/yearly">Yearly</MenuNavLink>
+ * </NavMenuColumn>
+ * ```
+ */
 export function NavMenuColumn({ children, title }: NavMenuColumnProps) {
   return (
     <Menu className="w-full">

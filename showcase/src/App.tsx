@@ -3,6 +3,7 @@ import { SegmentedControl } from '@ksojecki/ui/forms';
 import { Heading } from '@ksojecki/ui/typography';
 import { PALETTES, SCHEMES, loadThemeChoice, saveThemeChoice, themeName } from './themeChoice';
 import type { Palette, Scheme } from './themeChoice';
+import { ComponentDocs } from './ComponentDocs';
 import { ActionsSection } from './sections/ActionsSection';
 import { DataSection } from './sections/DataSection';
 import { FeedbackSection } from './sections/FeedbackSection';
@@ -48,6 +49,9 @@ export function App() {
                 {label}
               </a>
             ))}
+            <a className="link" href={`${import.meta.env.BASE_URL}docs/`}>
+              API reference
+            </a>
           </nav>
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-(--paper-border) bg-base-100 px-4 py-2">
@@ -69,7 +73,10 @@ export function App() {
       </header>
       <main className="mx-auto flex max-w-6xl flex-col gap-10 p-4">
         {SECTIONS.map(({ id, Component }) => (
-          <Component key={id} />
+          <div className="flex flex-col gap-4" key={id}>
+            <Component />
+            <ComponentDocs group={id} />
+          </div>
         ))}
       </main>
     </div>

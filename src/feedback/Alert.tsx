@@ -33,7 +33,17 @@ const ALERT_ROLE: Record<StatusPurpose, 'alert' | 'status'> = {
   error: 'alert',
 };
 
-/** Shared inline message. Pass `role` to override the purpose default. */
+/**
+ * Shared inline message. Pass `role` to override the purpose default.
+ *
+ * @example
+ * ```tsx
+ * <Alert purpose="success">Saved.</Alert>
+ * <Alert announce={false} purpose="info" variant="soft">
+ *   Prices include VAT.
+ * </Alert>
+ * ```
+ */
 export const Alert = ({
   announce = true,
   children,

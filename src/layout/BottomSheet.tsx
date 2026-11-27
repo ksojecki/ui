@@ -18,6 +18,13 @@ export interface BottomSheetProps extends Omit<ComponentPropsWithoutRef<'section
 /**
  * Panel docked at the bottom of a flex column. The body stays mounted when collapsed,
  * so form state inside it is kept.
+ *
+ * @example
+ * ```tsx
+ * <BottomSheet defaultOpen summary="3 stops, 25 min" title="Route">
+ *   <StopList />
+ * </BottomSheet>
+ * ```
  */
 export function BottomSheet({
   children,

@@ -45,6 +45,16 @@ export type NativeDialogProps = {
   title?: ReactNode;
 };
 
+/**
+ * Bare native `<dialog>` box. Control it with `open` or the `api` ref; while `saving` is true, Escape does not close it.
+ *
+ * @example
+ * ```tsx
+ * <NativeDialog backdropLabel="Close" onClose={close} open={isOpen} size="sm" title="Rename">
+ *   <Input label="Name" />
+ * </NativeDialog>
+ * ```
+ */
 export const NativeDialog = ({
   children,
   api,
@@ -123,6 +133,24 @@ export const NativeDialog = ({
   );
 };
 
+/**
+ * Modal dialog with a title, a close button and an actions row. Open and close it through the `api` ref.
+ *
+ * @example
+ * ```tsx
+ * const modal = useRef<ModalWindowApi | null>(null);
+ *
+ * <Button onClick={() => modal.current?.show()}>Edit</Button>
+ * <ModalWindow
+ *   actions={<Button purpose="save">Save</Button>}
+ *   api={modal}
+ *   closeLabel="Close"
+ *   title="Edit item"
+ * >
+ *   <Paragraph>Edit the item details before saving.</Paragraph>
+ * </ModalWindow>
+ * ```
+ */
 export const ModalWindow = ({
   actions,
   api,

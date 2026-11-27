@@ -1,3 +1,8 @@
+/**
+ * Alerts, badges, toasts, progress, loading placeholders and empty states.
+ *
+ * @module @ksojecki/ui/feedback
+ */
 export * from './Alert';
 export * from './Badge';
 export * from './Toast';

@@ -16,7 +16,14 @@ const CHECKBOX_SIZE_CLASS_NAMES: Record<ControlSize, string> = {
   lg: 'checkbox-lg',
 };
 
-/** Shared checkbox with its label wrapped around it. */
+/**
+ * Shared checkbox with its label wrapped around it.
+ *
+ * @example
+ * ```tsx
+ * <Checkbox defaultChecked label="Remember me" />
+ * ```
+ */
 export function Checkbox({
   label,
   error,

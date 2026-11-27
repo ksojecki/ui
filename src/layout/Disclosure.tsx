@@ -8,7 +8,16 @@ export interface DisclosureProps extends ComponentPropsWithoutRef<'details'> {
   summary: ReactNode;
 }
 
-/** Native disclosure: Enter and Space toggle it through the `summary` element. */
+/**
+ * Native disclosure: Enter and Space toggle it through the `summary` element.
+ *
+ * @example
+ * ```tsx
+ * <Disclosure bordered summary="Shipping details">
+ *   <Paragraph>Ships within two working days.</Paragraph>
+ * </Disclosure>
+ * ```
+ */
 export const Disclosure = ({
   bordered = false,
   children,

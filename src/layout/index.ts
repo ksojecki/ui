@@ -1,3 +1,8 @@
+/**
+ * Page shells, headers, sections, cards and other containers.
+ *
+ * @module @ksojecki/ui/layout
+ */
 export * from './BottomSheet';
 export * from './Card';
 export * from './Disclosure';

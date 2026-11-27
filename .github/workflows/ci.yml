@@ -32,6 +32,7 @@ jobs:
         run: |
           pnpm --filter @ksojecki/ui-showcase build
           grep -q 'src="/ui/assets/' showcase/dist/index.html
+          test -f showcase/dist/docs/modules/_ksojecki_ui_actions.html
 
   deploy-preview:
     needs: validate

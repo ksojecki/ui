@@ -1,0 +1,17 @@
+{
+  "name": "@ksojecki/ui-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./vite": {
+      "types": "./vite.d.mts",
+      "default": "./vite.mjs"
+    }
+  },
+  "dependencies": {
+    "react-docgen-typescript": "2.4.0",
+    "typedoc": "0.28.20",
+    "typescript": "6.0.3"
+  }
+}

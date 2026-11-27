@@ -14,7 +14,21 @@ export interface FormActionsProps {
   className?: string;
 }
 
-/** Error alert plus submit and cancel buttons for the end of a form. */
+/**
+ * Error alert plus submit and cancel buttons for the end of a form.
+ *
+ * @example
+ * ```tsx
+ * <FormActions
+ *   cancelLabel="Cancel"
+ *   error={saveError}
+ *   onCancel={close}
+ *   saveLabel="Save"
+ *   saving={isSaving}
+ *   savingLabel="Saving"
+ * />
+ * ```
+ */
 export const FormActions = ({
   cancelLabel,
   className,

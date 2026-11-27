@@ -26,6 +26,13 @@ const CARD_SIZE_CLASS_NAMES: Record<CardSize, string> = {
 
 /**
  * Reusable content container for grouping related UI sections.
+ *
+ * @example
+ * ```tsx
+ * <Card actions={<Button purpose="edit">Change</Button>} title="Plan">
+ *   <Paragraph>Pro, billed yearly.</Paragraph>
+ * </Card>
+ * ```
  */
 export function Card({
   actions,

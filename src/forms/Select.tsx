@@ -22,6 +22,14 @@ const SELECT_SIZE_CLASS_NAMES: Record<ControlSize, string> = {
 /**
  * Shared select. Pass `label` to get a labelled Field; omit it for the bare control.
  * Hint and error render below the control either way. Pass `<option>` elements as children.
+ *
+ * @example
+ * ```tsx
+ * <Select defaultValue="PLN" label="Currency">
+ *   <option value="PLN">PLN</option>
+ *   <option value="EUR">EUR</option>
+ * </Select>
+ * ```
  */
 export function Select({
   label,

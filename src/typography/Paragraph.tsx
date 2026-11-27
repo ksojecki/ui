@@ -14,6 +14,14 @@ const PARAGRAPH_TONE_CLASS_NAMES: Record<ParagraphTone, string> = {
   muted: 'text-base-content/70',
 };
 
+/**
+ * Body text paragraph. `tone="muted"` for secondary text.
+ *
+ * @example
+ * ```tsx
+ * <Paragraph tone="muted">Updated two hours ago.</Paragraph>
+ * ```
+ */
 export function Paragraph({ children, className, tone = 'default' }: ParagraphProps) {
   return (
     <p className={joinClassNames('leading-6', PARAGRAPH_TONE_CLASS_NAMES[tone], className)}>

@@ -41,7 +41,17 @@ const STAT_TONE_CLASS_NAMES: Record<StatusPurpose, string> = {
   error: 'text-error',
 };
 
-/** Container for `Metric` items. Lay out with Tailwind classes passed in `className`. */
+/**
+ * Container for `Metric` items. Lay out with Tailwind classes passed in `className`.
+ *
+ * @example
+ * ```tsx
+ * <MetricGroup responsive>
+ *   <Metric label="Items" value="128" />
+ *   <Metric label="Out of stock" tone="error" value="5" />
+ * </MetricGroup>
+ * ```
+ */
 export const MetricGroup = ({
   children,
   className,
@@ -59,7 +69,14 @@ export const MetricGroup = ({
   </div>
 );
 
-/** One figure: a label, a value, and optional description and figure. `appearance="boxed"` frames it as a card. */
+/**
+ * One figure: a label, a value, and optional description and figure. `appearance="boxed"` frames it as a card.
+ *
+ * @example
+ * ```tsx
+ * <Metric appearance="boxed" description="vs. last month" label="Stock growth" tone="success" value="+12%" />
+ * ```
+ */
 export const Metric = ({
   appearance = 'default',
   className,

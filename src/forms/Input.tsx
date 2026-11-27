@@ -22,6 +22,11 @@ const INPUT_SIZE_CLASS_NAMES: Record<ControlSize, string> = {
 /**
  * Shared text input. Pass `label` to get a labelled Field; omit it for the bare control
  * (for example in filter bars). Hint and error render below the control either way.
+ *
+ * @example
+ * ```tsx
+ * <Input hint="We never share it." label="Email" type="email" />
+ * ```
  */
 export function Input({
   label,

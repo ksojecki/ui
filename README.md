@@ -89,7 +89,7 @@ MIT
 
 Use Node 26 and pnpm 12. The repository pins their versions in `.node-version` and `package.json`.
 
-Run `pnpm install --frozen-lockfile && pnpm dev:ui-showcase`, then open [localhost:4400](http://localhost:4400). The gallery loads components from source and previews all four palettes in light and dark. It is not included in the package tarball.
+Run `pnpm install --frozen-lockfile && pnpm dev:ui-showcase`, then open [localhost:4400](http://localhost:4400). The gallery loads components from source and previews all four palettes in light and dark. It is not included in the package tarball. The published gallery at [sojecki.pl/ui](https://sojecki.pl/ui/) lists the props and an example for every component, and [sojecki.pl/ui/docs](https://sojecki.pl/ui/docs/) has the API reference generated from the TypeScript source.
 
 ```sh
 pnpm install --frozen-lockfile

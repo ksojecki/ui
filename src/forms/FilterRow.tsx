@@ -9,6 +9,19 @@ export interface FilterRowProps extends ComponentPropsWithoutRef<'div'> {
   removeLabel?: string;
 }
 
+/**
+ * One filter condition on a single row that scrolls sideways, with a remove button when `onRemove` is set.
+ *
+ * @example
+ * ```tsx
+ * <FilterRow onRemove={() => removeFilter(index)} removeLabel="Remove filter">
+ *   <Select aria-label="Field">
+ *     <option>Amount</option>
+ *   </Select>
+ *   <Input aria-label="Value" type="number" />
+ * </FilterRow>
+ * ```
+ */
 export function FilterRow({
   children,
   className,

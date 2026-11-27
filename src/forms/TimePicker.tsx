@@ -82,6 +82,22 @@ function MinuteChoices({
   );
 }
 
+/**
+ * Time field that opens an hour grid, then a minute grid, in a dropdown. `value` and `max` use `HH:MM`; `max` defaults to `23:59`.
+ *
+ * @example
+ * ```tsx
+ * <TimePicker
+ *   changeHourLabel="Change hour"
+ *   id="start-time"
+ *   label="Start time"
+ *   onChange={setStartTime}
+ *   selectHourLabel="Hour"
+ *   selectMinuteLabel="Minute"
+ *   value={startTime}
+ * />
+ * ```
+ */
 export function TimePicker({
   id,
   value,

@@ -22,6 +22,11 @@ const FILE_INPUT_SIZE_CLASS_NAMES: Record<ControlSize, string> = {
 /**
  * Shared file picker. Pass `label` to get a labelled Field; omit it for the bare control.
  * Hint and error render below the control either way.
+ *
+ * @example
+ * ```tsx
+ * <FileInput accept="image/*" label="Avatar" />
+ * ```
  */
 export function FileInput({
   label,

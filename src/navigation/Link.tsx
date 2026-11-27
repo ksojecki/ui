@@ -46,6 +46,14 @@ const LINK_TONE_CLASS_NAMES: Record<ButtonTone, string> = {
 /**
  * Link component that can render as a styled link or button.
  * When asButton is true, it shares Button's classes; otherwise it uses link classes.
+ *
+ * @example
+ * ```tsx
+ * <Link to="/invoices">All invoices</Link>
+ * <Link asButton purpose="create" to="/invoices/new">
+ *   New invoice
+ * </Link>
+ * ```
  */
 export const Link = ({
   children,

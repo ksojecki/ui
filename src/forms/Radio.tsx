@@ -39,7 +39,14 @@ const RADIO_ORIENTATION_CLASS_NAMES: Record<NonNullable<RadioGroupProps['orienta
   horizontal: 'flex flex-row flex-wrap gap-4',
 };
 
-/** One radio button with its label wrapped around it. Hint and error render below it. */
+/**
+ * One radio button with its label wrapped around it. Hint and error render below it.
+ *
+ * @example
+ * ```tsx
+ * <Radio label="Monthly" name="billing" value="monthly" />
+ * ```
+ */
 export function Radio({
   className,
   controlSize = 'md',
@@ -74,6 +81,20 @@ export function Radio({
  * Radios grouped in a fieldset named by `legend`. Arrow keys move selection natively.
  * Hint and error sit under the group; each radio references them. aria-invalid goes on the
  * radiogroup wrapper because ARIA does not allow it on a radio.
+ *
+ * @example
+ * ```tsx
+ * <RadioGroup
+ *   legend="Billing"
+ *   name="billing"
+ *   onChange={setBilling}
+ *   options={[
+ *     { value: 'monthly', label: 'Monthly' },
+ *     { value: 'yearly', label: 'Yearly' },
+ *   ]}
+ *   value={billing}
+ * />
+ * ```
  */
 export function RadioGroup({
   error,

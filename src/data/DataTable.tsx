@@ -61,7 +61,23 @@ function cellContent<T extends object>(column: DataTableColumn<T>, row: T): Reac
   return value === null || value === undefined ? '' : String(value);
 }
 
-/** Table driven by plain objects: pass `rows` and optional `columns`, not markup. */
+/**
+ * Table driven by plain objects: pass `rows` and optional `columns`, not markup.
+ *
+ * @example
+ * ```tsx
+ * <DataTable
+ *   columns={[
+ *     { key: 'name' },
+ *     { key: 'quantity', kind: 'number' },
+ *     { id: 'status', header: 'Status', render: (row) => <Badge purpose="success">{row.status}</Badge> },
+ *   ]}
+ *   empty="No items."
+ *   label="Items"
+ *   rows={items}
+ * />
+ * ```
+ */
 export function DataTable<T extends object>({
   rows,
   columns,
