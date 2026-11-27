@@ -21,6 +21,11 @@ html {
   line-height: 1.65;
 }
 
+/* Tailwind's base line height, so examples look as they do in an app. */
+.docs-example {
+  line-height: 1.5;
+}
+
 .docs-prose > * + * {
   margin-top: 1rem;
 }
