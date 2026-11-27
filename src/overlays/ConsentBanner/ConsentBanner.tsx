@@ -27,6 +27,21 @@ const CHOICE_BUTTON_PROPS = {
 /**
  * Non-modal consent prompt pinned to the bottom of the viewport. The page stays usable behind it.
  * z-[1200] sits above toasts (z-[1100]) and typical map-library overlays (z-[1000]).
+ *
+ * @example
+ * ```tsx
+ * <ConsentBanner
+ *   acceptLabel="Accept"
+ *   body="We use cookies to measure page performance."
+ *   onAccept={accept}
+ *   onReject={reject}
+ *   onSettings={openSettings}
+ *   policyLink={{ label: 'Privacy policy', to: '/privacy' }}
+ *   rejectLabel="Reject"
+ *   settingsLabel="Settings"
+ *   title="Cookies"
+ * />
+ * ```
  */
 export function ConsentBanner({
   title,

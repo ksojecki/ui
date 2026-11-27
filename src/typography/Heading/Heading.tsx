@@ -33,6 +33,17 @@ const sizeClass = (size: HeadingLevel | 'label') => {
   return isLevel(size) ? classes[size - 1] : 'text-3xl';
 };
 
+/**
+ * Heading whose tag (`level`) and visual size (`size`) are set separately, so the document outline stays correct.
+ *
+ * @example
+ * ```tsx
+ * <Heading level={2}>Invoices</Heading>
+ * <Heading level={3} size="label">
+ *   Totals
+ * </Heading>
+ * ```
+ */
 export const Heading = ({ children, className, id, level, size = level, title }: HeadingProps) => {
   const index = isLevel(level) ? level - 1 : -1;
   const Tag = tags[index] ?? 'h6';

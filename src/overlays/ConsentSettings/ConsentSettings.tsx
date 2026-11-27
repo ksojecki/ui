@@ -28,7 +28,30 @@ export interface ConsentSettingsProps {
   policyLink: { label: string; to: To };
 }
 
-/** Consent preferences dialog. The optional switch stays local until Save, and reopening resets it to `rumEnabled`. */
+/**
+ * Consent preferences dialog. The optional switch stays local until Save, and reopening resets it to `rumEnabled`.
+ *
+ * @example
+ * ```tsx
+ * <ConsentSettings
+ *   acceptAllLabel="Accept all"
+ *   closeLabel="Close"
+ *   intro="Choose which categories we may use."
+ *   necessaryDescription="Required for the site to work."
+ *   necessaryLabel="Necessary"
+ *   onAcceptAll={acceptAll}
+ *   onClose={close}
+ *   onSave={saveRum}
+ *   open={isOpen}
+ *   policyLink={{ label: 'Privacy policy', to: '/privacy' }}
+ *   rumDescription="Helps us understand page performance."
+ *   rumEnabled={rumEnabled}
+ *   rumLabel="Usage statistics"
+ *   saveLabel="Save"
+ *   title="Privacy settings"
+ * />
+ * ```
+ */
 export function ConsentSettings({
   open,
   rumEnabled,

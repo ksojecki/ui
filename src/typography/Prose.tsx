@@ -6,7 +6,17 @@ export interface ProseProps {
   className?: string;
 }
 
-/** Long-form reading column: caps the line length at about 65 characters and sets rhythm for the headings, paragraphs and lists inside. */
+/**
+ * Long-form reading column: caps the line length at about 65 characters and sets rhythm for the headings, paragraphs and lists inside.
+ *
+ * @example
+ * ```tsx
+ * <Prose>
+ *   <h2>Terms</h2>
+ *   <p>By using the service you agree to these terms.</p>
+ * </Prose>
+ * ```
+ */
 export function Prose({ children, className }: ProseProps) {
   return (
     <div

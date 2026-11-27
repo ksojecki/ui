@@ -21,7 +21,27 @@ const TABLE_SIZE_CLASS_NAMES: Record<TableSize, string> = {
   lg: 'table-lg',
 };
 
-/** Shared data table. The wrapper scrolls horizontally on narrow screens. */
+/**
+ * Shared data table. The wrapper scrolls horizontally on narrow screens.
+ *
+ * @example
+ * ```tsx
+ * <Table label="Invoices" zebra>
+ *   <thead>
+ *     <tr>
+ *       <th>Number</th>
+ *       <th>Total</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td>FV/1/2026</td>
+ *       <td>120.00</td>
+ *     </tr>
+ *   </tbody>
+ * </Table>
+ * ```
+ */
 export function Table({
   tableSize = 'sm',
   zebra = false,

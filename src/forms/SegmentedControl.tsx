@@ -19,7 +19,22 @@ export interface SegmentedControlProps {
 
 const TRACK_CLASS_NAME = 'gap-1 rounded-field border border-(--control-border) bg-base-200 p-1';
 
-/** Single-selection toggle group: a bordered track with the selected option as a bordered sheet-coloured pill. */
+/**
+ * Single-selection toggle group: a bordered track with the selected option as a bordered sheet-coloured pill.
+ *
+ * @example
+ * ```tsx
+ * <SegmentedControl
+ *   label="View"
+ *   onChange={setView}
+ *   options={[
+ *     { value: 'list', label: 'List' },
+ *     { value: 'grid', label: 'Grid' },
+ *   ]}
+ *   value={view}
+ * />
+ * ```
+ */
 export const SegmentedControl = ({
   fullWidth = false,
   label,

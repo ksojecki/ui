@@ -14,6 +14,19 @@ export interface PageHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>
   title: ReactNode;
 }
 
+/**
+ * Page title block with an optional eyebrow, description, meta line and actions.
+ *
+ * @example
+ * ```tsx
+ * <PageHeader
+ *   actions={<NewButton label="New invoice" />}
+ *   description="All invoices issued this year."
+ *   eyebrow="Billing"
+ *   title="Invoices"
+ * />
+ * ```
+ */
 export function PageHeader({
   actions,
   className,

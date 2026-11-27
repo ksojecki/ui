@@ -35,7 +35,16 @@ export function fieldDescribedBy(
   return [callerIds, hint && ids.hint, error && ids.error].filter(Boolean).join(' ') || undefined;
 }
 
-/** Hint (muted) or error (alert) text under a field or a checkbox. daisyUI's `label` never wraps, so long text needs `whitespace-normal`. */
+/**
+ * Hint (muted) or error (alert) text under a field or a checkbox. daisyUI's `label` never wraps, so long text needs `whitespace-normal`.
+ *
+ * @example
+ * ```tsx
+ * <FieldMessage id="email-error" tone="error">
+ *   Enter a valid email address.
+ * </FieldMessage>
+ * ```
+ */
 export function FieldMessage({
   children,
   id,
@@ -56,7 +65,14 @@ export function FieldMessage({
   );
 }
 
-/** The hint and error paragraphs of a control, with the ids `fieldDescribedBy` references. */
+/**
+ * The hint and error paragraphs of a control, with the ids `fieldDescribedBy` references.
+ *
+ * @example
+ * ```tsx
+ * <FieldMessages controlId="email" error={errors.email} hint="We never share it." />
+ * ```
+ */
 export function FieldMessages({
   controlId,
   hint,
@@ -84,6 +100,13 @@ export function FieldMessages({
  * with an optional muted hint and an optional error message.
  * Without `controlId` it labels a group of controls (radios, checkboxes) instead.
  * `id` sets the base id of the message paragraphs when a group needs to reference them.
+ *
+ * @example
+ * ```tsx
+ * <Field controlId="iban" hint="26 digits, no spaces." label="Account number">
+ *   <input className="input" id="iban" inputMode="numeric" />
+ * </Field>
+ * ```
  */
 export function Field({ label, hint, error, controlId, id, children, className }: FieldProps) {
   const generatedId = useId();

@@ -8,7 +8,18 @@ export interface ButtonGroupProps {
   label?: string;
 }
 
-/** Joins its children (buttons, links, icon buttons, badges) into one segmented strip. */
+/**
+ * Joins its children (buttons, links, icon buttons, badges) into one segmented strip.
+ *
+ * @example
+ * ```tsx
+ * <ButtonGroup label="Range">
+ *   <Button tone="neutral">Day</Button>
+ *   <Button tone="neutral">Week</Button>
+ *   <Button tone="neutral">Month</Button>
+ * </ButtonGroup>
+ * ```
+ */
 export function ButtonGroup({ children, className, label }: ButtonGroupProps) {
   return (
     <div

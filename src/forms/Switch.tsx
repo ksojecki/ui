@@ -8,7 +8,14 @@ export interface SwitchProps extends Omit<ComponentPropsWithRef<'input'>, 'size'
   error?: string;
 }
 
-/** Shared switch with its label wrapped around it. Hint and error render below it. */
+/**
+ * Shared switch with its label wrapped around it. Hint and error render below it.
+ *
+ * @example
+ * ```tsx
+ * <Switch defaultChecked label="Email notifications" />
+ * ```
+ */
 export function Switch({
   label,
   hint,

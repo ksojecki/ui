@@ -1,3 +1,8 @@
+/**
+ * Labelled form controls, date and time pickers, filter bars and form actions.
+ *
+ * @module @ksojecki/ui/forms
+ */
 export * from './Field';
 export * from './FormField';
 export * from './Input';

@@ -42,6 +42,9 @@ function omitBasesOf(name: string, source: string) {
   }));
 }
 
+// Block tags such as `@example` are for editors and agents; the page shows live examples instead.
+const summaryOf = (description = '') => description.replace(/^@\w[\s\S]*$/m, '').trim();
+
 function toDoc(doc: Documentation, file: string, source: string): ComponentDoc | undefined {
   if (!doc.displayName) {
     return undefined;
@@ -49,7 +52,7 @@ function toDoc(doc: Documentation, file: string, source: string): ComponentDoc |
   return {
     name: doc.displayName,
     file,
-    description: doc.description ?? '',
+    description: summaryOf(doc.description),
     props: Object.entries(doc.props ?? {}).map(([name, prop]) => ({
       name,
       type: typeOf(prop),

@@ -71,7 +71,19 @@ const BUTTON_SIZE_CLASS_NAMES: Record<ButtonSize, string> = {
 
 const ButtonSizeContext = createContext<ButtonSize | undefined>(undefined);
 
-/** Default size for the buttons and links rendered inside it. An explicit `size` prop still wins. */
+/**
+ * Default size for the buttons and links rendered inside it. An explicit `size` prop still wins.
+ *
+ * @example
+ * ```tsx
+ * <ButtonSizeProvider size="sm">
+ *   <Button>Small button</Button>
+ *   <Link asButton to="/new">
+ *     Small link
+ *   </Link>
+ * </ButtonSizeProvider>
+ * ```
+ */
 export function ButtonSizeProvider({ size, children }: { size: ButtonSize; children: ReactNode }) {
   return <ButtonSizeContext.Provider value={size}>{children}</ButtonSizeContext.Provider>;
 }
@@ -122,6 +134,16 @@ export function buttonClassName({
 /**
  * Reusable button component for shared UI actions across applications.
  * Resolution: explicit `tone`/`variant` win, then `purpose`, then primary/solid.
+ *
+ * @example
+ * ```tsx
+ * <Button purpose="save" type="submit">
+ *   Save
+ * </Button>
+ * <Button isLoading purpose="save">
+ *   Saving
+ * </Button>
+ * ```
  */
 export const Button = ({
   children,

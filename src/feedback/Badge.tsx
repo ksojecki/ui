@@ -36,7 +36,16 @@ const BADGE_SIZE_CLASS_NAMES: Record<BadgeSize, string> = {
   lg: 'badge-lg',
 };
 
-/** Shared status label. Use `purpose` for meaning, never a colour class. */
+/**
+ * Shared status label. Use `purpose` for meaning, never a colour class.
+ *
+ * @example
+ * ```tsx
+ * <Badge purpose="success" size="sm">
+ *   Paid
+ * </Badge>
+ * ```
+ */
 export const Badge = ({
   children,
   className,

@@ -41,7 +41,20 @@ const MENU_SIZE_CLASS_NAMES: Record<MenuSize, string> = {
   lg: 'menu-lg',
 };
 
-/** Vertical list of links or buttons; `horizontal` lays the items out in a row. */
+/**
+ * Vertical list of links or buttons; `horizontal` lays the items out in a row.
+ *
+ * @example
+ * ```tsx
+ * <Menu>
+ *   <MenuTitle>Account</MenuTitle>
+ *   <MenuNavLink to="/profile">Profile</MenuNavLink>
+ *   <MenuItem>
+ *     <MenuButton onClick={signOut}>Sign out</MenuButton>
+ *   </MenuItem>
+ * </Menu>
+ * ```
+ */
 export function Menu({ children, className, horizontal = false, size = 'md' }: MenuProps) {
   return (
     <ul
@@ -68,7 +81,16 @@ function disabledMenuLink(children: MenuItemProps['children'], className: string
   return createElement('a', { ...props, 'aria-disabled': true, className, role: 'link' });
 }
 
-/** Wraps one link or button in an `li`; `active` and `disabled` mark the child. */
+/**
+ * Wraps one link or button in an `li`; `active` and `disabled` mark the child.
+ *
+ * @example
+ * ```tsx
+ * <MenuItem disabled>
+ *   <MenuButton>Archive</MenuButton>
+ * </MenuItem>
+ * ```
+ */
 export function MenuItem({ children, active = false, disabled = false }: MenuItemProps) {
   const className = joinClassNames(
     children.props.className,
@@ -87,16 +109,47 @@ export function MenuItem({ children, active = false, disabled = false }: MenuIte
   return <li>{cloneElement(children, { className: className || undefined })}</li>;
 }
 
-/** Plain button for a `MenuItem`: menu row styling, not the `btn` look. Pass `aria-current` for the selected row. */
+/**
+ * Plain button for a `MenuItem`: menu row styling, not the `btn` look. Pass `aria-current` for the selected row.
+ *
+ * @example
+ * ```tsx
+ * <MenuItem>
+ *   <MenuButton aria-current="true" onClick={showAll}>
+ *     All
+ *   </MenuButton>
+ * </MenuItem>
+ * ```
+ */
 export function MenuButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" {...props} />;
 }
 
+/**
+ * Non-interactive row that labels the menu items after it.
+ *
+ * @example
+ * ```tsx
+ * <MenuTitle>Account</MenuTitle>
+ * ```
+ */
 export function MenuTitle({ children }: { children: ReactNode }) {
   return <li className="menu-title">{children}</li>;
 }
 
-/** Router link in a menu item that gets `menu-active` while its route matches. */
+/**
+ * Router link in a menu item that gets `menu-active` while its route matches.
+ *
+ * @example
+ * ```tsx
+ * <Menu>
+ *   <MenuNavLink end to="/">
+ *     Overview
+ *   </MenuNavLink>
+ *   <MenuNavLink to="/invoices">Invoices</MenuNavLink>
+ * </Menu>
+ * ```
+ */
 export function MenuNavLink({ children, end = false, to }: MenuNavLinkProps) {
   return (
     <li>

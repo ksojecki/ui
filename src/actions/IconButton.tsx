@@ -14,6 +14,14 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   variant?: ButtonVariant;
 }
 
+/**
+ * Square icon-only button. `label` is its accessible name and tooltip. Without `purpose` or `tone` it is a ghost button.
+ *
+ * @example
+ * ```tsx
+ * <IconButton icon={<TbSearch />} label="Search" onClick={openSearch} />
+ * ```
+ */
 export function IconButton({
   icon,
   label,

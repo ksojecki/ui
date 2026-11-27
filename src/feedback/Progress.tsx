@@ -28,7 +28,14 @@ const PROGRESS_PURPOSE_CLASS_NAMES: Record<ProgressPurpose, string> = {
 
 const clamp = (amount: number, max: number) => Math.min(Math.max(amount, 0), max);
 
-/** Determinate meter. Pass `label` so assistive tech can name it. */
+/**
+ * Determinate meter. Pass `label` so assistive tech can name it.
+ *
+ * @example
+ * ```tsx
+ * <Progress label="Budget used" marker={80} purpose="warning" value={64} />
+ * ```
+ */
 export const Progress = ({
   className,
   label,

@@ -17,7 +17,14 @@ const SPINNER_SIZE_CLASS_NAMES: Record<SpinnerSize, string> = {
   lg: 'loading-lg',
 };
 
-/** Loading indicator. Pass `label` when it stands for a state the user waits on. */
+/**
+ * Loading indicator. Pass `label` when it stands for a state the user waits on.
+ *
+ * @example
+ * ```tsx
+ * <Spinner label="Loading invoices" size="sm" />
+ * ```
+ */
 export const Spinner = ({ className, label, size = 'md', ...rest }: SpinnerProps) => (
   <span
     {...rest}

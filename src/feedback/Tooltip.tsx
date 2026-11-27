@@ -18,7 +18,16 @@ const TOOLTIP_POSITION_CLASS_NAMES: Record<TooltipPosition, string> = {
   right: 'tooltip-right',
 };
 
-/** Shows `text` on the child. The text is also linked to the child via `aria-describedby`. */
+/**
+ * Shows `text` on the child. The text is also linked to the child via `aria-describedby`.
+ *
+ * @example
+ * ```tsx
+ * <Tooltip text="Includes VAT">
+ *   <Button tone="ghost">Total</Button>
+ * </Tooltip>
+ * ```
+ */
 export const Tooltip = ({ children, className, position = 'top', text, ...rest }: TooltipProps) => {
   const id = useId();
   // Keep any description the child already has; the tip text is appended to it.

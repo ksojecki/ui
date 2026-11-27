@@ -15,6 +15,16 @@ const WIDTH_CLASS: Record<PageContainerWidth, string> = {
   full: '',
 };
 
+/**
+ * Centres page content and caps its width: `standard` (default), `wide` or `full`.
+ *
+ * @example
+ * ```tsx
+ * <PageContainer width="wide">
+ *   <PageHeader title="Reports" />
+ * </PageContainer>
+ * ```
+ */
 export function PageContainer({
   children,
   className,

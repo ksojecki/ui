@@ -44,6 +44,21 @@ interface DatePickerProps {
   value: string;
 }
 
+/**
+ * Date field that opens a calendar in a dropdown. `value`, `min` and `max` are ISO dates (`YYYY-MM-DD`); the trigger shows `value` formatted for `locale`.
+ *
+ * @example
+ * ```tsx
+ * <DatePicker
+ *   id="due-date"
+ *   locale="en-GB"
+ *   nextLabel="Next month"
+ *   onChange={setDueDate}
+ *   previousLabel="Previous month"
+ *   value={dueDate}
+ * />
+ * ```
+ */
 export function DatePicker({
   id,
   min,

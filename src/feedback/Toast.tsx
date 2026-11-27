@@ -33,14 +33,36 @@ const TOAST_POSITION_CLASS_NAMES: Record<ToastPosition, string> = {
   'bottom-center': 'toast-bottom toast-center',
 };
 
-/** Live region for toasts. Toasts inside it are announced politely. */
+/**
+ * Live region for toasts. Toasts inside it are announced politely.
+ *
+ * @example
+ * ```tsx
+ * <ToastRegion position="top-end">
+ *   {toasts.map((toast) => (
+ *     <Toast key={toast.id} purpose={toast.purpose}>
+ *       {toast.text}
+ *     </Toast>
+ *   ))}
+ * </ToastRegion>
+ * ```
+ */
 export const ToastRegion = ({ children, className, position = 'bottom-end' }: ToastRegionProps) => (
   <output className={joinClassNames('toast', TOAST_POSITION_CLASS_NAMES[position], className)}>
     {children}
   </output>
 );
 
-/** One toast message. The region announces routine status; warnings and errors keep their assertive alert role. */
+/**
+ * One toast message. The region announces routine status; warnings and errors keep their assertive alert role.
+ *
+ * @example
+ * ```tsx
+ * <Toast dismissLabel="Dismiss" onDismiss={dismiss} purpose="success">
+ *   Invoice sent.
+ * </Toast>
+ * ```
+ */
 export const Toast = ({ children, dismissLabel, onDismiss, purpose = 'info' }: ToastProps) => (
   <Alert
     announce={purpose === 'warning' || purpose === 'error'}

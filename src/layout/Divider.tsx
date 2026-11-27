@@ -8,7 +8,14 @@ export interface DividerProps extends ComponentPropsWithoutRef<'div'> {
   row?: boolean;
 }
 
-/** Separates content. Pass `children` to label the divider. */
+/**
+ * Separates content. Pass `children` to label the divider.
+ *
+ * @example
+ * ```tsx
+ * <Divider>or</Divider>
+ * ```
+ */
 export const Divider = ({
   children,
   className,

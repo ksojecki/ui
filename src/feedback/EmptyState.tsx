@@ -13,7 +13,16 @@ export interface EmptyStateProps {
   className?: string;
 }
 
-/** Placeholder for a list or panel with nothing to show. */
+/**
+ * Placeholder for a list or panel with nothing to show.
+ *
+ * @example
+ * ```tsx
+ * <EmptyState action={<NewButton label="New invoice" />} title="No invoices yet">
+ *   Create the first one to get started.
+ * </EmptyState>
+ * ```
+ */
 export const EmptyState = ({
   action,
   children,

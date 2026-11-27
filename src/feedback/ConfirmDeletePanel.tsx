@@ -20,7 +20,21 @@ export interface ConfirmDeletePanelProps {
   onConfirm: () => void;
 }
 
-/** Inline confirmation for a destructive action: optional content, warning, error, then cancel and delete. */
+/**
+ * Inline confirmation for a destructive action: optional content, warning, error, then cancel and delete.
+ *
+ * @example
+ * ```tsx
+ * <ConfirmDeletePanel
+ *   cancelLabel="Keep"
+ *   confirmLabel="Delete"
+ *   onCancel={close}
+ *   onConfirm={remove}
+ *   saving={isDeleting}
+ *   warning="The invoice and its payments are removed."
+ * />
+ * ```
+ */
 export const ConfirmDeletePanel = ({
   cancelLabel,
   children,

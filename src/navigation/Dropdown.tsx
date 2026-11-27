@@ -57,6 +57,20 @@ function useControlledPopover(panelRef: RefObject<HTMLElement | null>, open: boo
 }
 
 // Native popover, not daisyUI's focus-based dropdown: Escape, light dismiss and focus return come from the platform.
+/**
+ * Trigger button with a panel in a native popover. Omit `open` to leave opening and closing to the platform; set it to control the panel from the parent.
+ *
+ * @example
+ * ```tsx
+ * <Dropdown align="end" trigger="Export" triggerPurpose="neutral">
+ *   <Menu>
+ *     <MenuItem>
+ *       <MenuButton>CSV</MenuButton>
+ *     </MenuItem>
+ *   </Menu>
+ * </Dropdown>
+ * ```
+ */
 export function Dropdown({
   children,
   className,

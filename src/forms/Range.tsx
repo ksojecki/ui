@@ -36,7 +36,14 @@ const RANGE_SIZE_CLASS_NAMES: Record<ControlSize, string> = {
   lg: 'range-lg',
 };
 
-/** Shared slider. Keyboard arrows and Home/End come from the native input. Pointer props reach the input for drag handling. */
+/**
+ * Shared slider. Keyboard arrows and Home/End come from the native input. Pointer props reach the input for drag handling.
+ *
+ * @example
+ * ```tsx
+ * <Range label="Volume" max={100} min={0} onChange={setVolume} value={volume} />
+ * ```
+ */
 export const Range = ({
   label,
   max,
