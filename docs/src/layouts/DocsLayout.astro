@@ -45,10 +45,10 @@ const toc = headings.filter((heading) => heading.depth === 2 || heading.depth ==
       class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-field focus:bg-base-100 focus:p-2"
       href="#content">Skip to content</a
     >
-    <header class="navbar paper-navbar sticky top-0 z-30 min-h-14 gap-4 px-4">
+    <header class="navbar paper-navbar sticky top-0 z-30 min-h-14 gap-2 px-3 sm:gap-4 sm:px-4">
       <a class="flex items-baseline gap-2 font-bold" href={docsHref('/')}>
         <span class="text-lg">@ksojecki/ui</span>
-        <span class="text-xs font-normal opacity-80">v{pkg.version}</span>
+        <span class="hidden text-xs font-normal opacity-80 sm:inline">v{pkg.version}</span>
       </a>
       <nav aria-label="Site" class="hidden gap-4 text-sm sm:flex">
         <a class="hover:underline" href={docsHref('/getting-started/')}>Get started</a>
