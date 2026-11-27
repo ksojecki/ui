@@ -1,10 +1,12 @@
-import { resolve } from 'node:path';
+import { resolve, sep } from 'node:path';
 import { writeApiReference } from './api-reference.mjs';
 import { readComponentDocs } from './component-docs.mjs';
 import { LIBRARY_ROOT } from './groups.mjs';
 
 const MODULE_ID = 'virtual:ui-component-docs';
 const RESOLVED_ID = `\0${MODULE_ID}`;
+// Vite reports changed files with forward slashes on every platform.
+const LIBRARY_SOURCE = resolve(LIBRARY_ROOT, 'src').split(sep).join('/');
 
 /**
  * Serves the props, descriptions and examples of every component as `virtual:ui-component-docs`,
@@ -24,7 +26,7 @@ export function componentDocs() {
       id === RESOLVED_ID ? `export default ${JSON.stringify(readComponentDocs())};` : undefined,
     handleHotUpdate({ file, modules, server }) {
       const docs = server.moduleGraph.getModuleById(RESOLVED_ID);
-      return docs && file.startsWith(resolve(LIBRARY_ROOT, 'src')) ? [...modules, docs] : undefined;
+      return docs && file.startsWith(LIBRARY_SOURCE) ? [...modules, docs] : undefined;
     },
     async closeBundle() {
       if (isBuild) {
