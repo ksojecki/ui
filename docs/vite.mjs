@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 import { writeApiReference } from './api-reference.mjs';
 import { readComponentDocs } from './component-docs.mjs';
+import { LIBRARY_ROOT } from './groups.mjs';
 
 const MODULE_ID = 'virtual:ui-component-docs';
 const RESOLVED_ID = `\0${MODULE_ID}`;
@@ -21,6 +22,10 @@ export function componentDocs() {
     resolveId: (id) => (id === MODULE_ID ? RESOLVED_ID : undefined),
     load: (id) =>
       id === RESOLVED_ID ? `export default ${JSON.stringify(readComponentDocs())};` : undefined,
+    handleHotUpdate({ file, modules, server }) {
+      const docs = server.moduleGraph.getModuleById(RESOLVED_ID);
+      return docs && file.startsWith(resolve(LIBRARY_ROOT, 'src')) ? [...modules, docs] : undefined;
+    },
     async closeBundle() {
       if (isBuild) {
         await writeApiReference(resolve(outDir, 'docs'));
