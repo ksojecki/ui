@@ -2,5 +2,6 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "singleQuote": true,
   "tabWidth": 2,
-  "useTabs": false
+  "useTabs": false,
+  "ignorePatterns": [".agents/skills/openspec*/**"]
 }
