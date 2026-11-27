@@ -18,8 +18,8 @@ export interface ComponentDoc {
   props: PropRow[];
   /** Names of the types the props extend, e.g. `ButtonHTMLAttributes`. */
   extendsTypes: string[];
-  /** Types wrapped in `Omit<…>` by the props type, e.g. `TableProps`. Their remaining props are accepted too. */
-  omitBases: string[];
+  /** Types wrapped in `Omit<…>` by the props type, e.g. `TableProps`, with the keys left out. Their other props are accepted too. */
+  omitBases: { type: string; omitted: string[] }[];
 }
 
 const repositoryRoot = resolve(process.cwd(), '..');
@@ -36,7 +36,10 @@ function typeOf(prop: NonNullable<Documentation['props']>[string]) {
 
 function omitBasesOf(name: string, source: string) {
   const declaration = new RegExp(`(?:interface|type) ${name}Props\\b[^{]*`).exec(source)?.[0] ?? '';
-  return [...declaration.matchAll(/\bOmit<(\w+Props)\b/g)].map((match) => match[1]);
+  return [...declaration.matchAll(/\bOmit<(\w+Props),([^>]*)>/g)].map(([, type, keys]) => ({
+    type,
+    omitted: [...keys.matchAll(/'(\w+)'/g)].map((key) => key[1]),
+  }));
 }
 
 function toDoc(doc: Documentation, file: string, source: string): ComponentDoc | undefined {

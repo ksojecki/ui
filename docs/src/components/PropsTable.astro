@@ -11,10 +11,10 @@ interface Props {
 const doc = componentDoc(Astro.props.of);
 const passesNativeProps = doc.extendsTypes.some((type) => type !== 'Pick');
 const pages = await getCollection('components');
-const inherited = doc.omitBases.map((type) => {
+const inherited = doc.omitBases.map(({ type, omitted }) => {
   const component = type.replace(/Props$/, '');
   const page = pages.find((entry) => entry.data.components.includes(component));
-  return { type, component, href: page && docsHref(`/components/${page.id}/#props`) };
+  return { type, omitted, component, href: page && docsHref(`/components/${page.id}/#props`) };
 });
 ---
 
@@ -72,11 +72,17 @@ const inherited = doc.omitBases.map((type) => {
       )
     }
     {
-      inherited.map(({ type, component, href }) => (
+      inherited.map(({ type, omitted, component, href }) => (
         <span>
           Also takes the props of{' '}
           {href ? <a class="underline" href={href}>{component}</a> : <code>{type}</code>}
-          , except the ones it sets itself.{' '}
+          {omitted.length > 0 && (
+            <>
+              {' '}
+              except <code>{omitted.join(', ')}</code>
+            </>
+          )}
+          .{' '}
         </span>
       ))
     }
