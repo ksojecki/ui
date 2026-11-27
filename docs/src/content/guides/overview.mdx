@@ -1,0 +1,37 @@
+---
+title: Overview
+description: React components and daisyUI themes with semantic purpose props, shared by Kamil Sojecki's apps.
+order: 0
+---
+
+`@ksojecki/ui` is the component library behind my apps. It gives them the same buttons, forms, tables, feedback, navigation, overlays and page layout, so a new app starts with a finished interface and every app looks and behaves the same.
+
+<Example name="guides/overview" />
+
+## Principles
+
+- **Purpose, not colour.** Components take a `purpose` such as `save`, `delete` or `warning`. The library turns it into a tone and variant, so the meaning stays the same in every app and palette. See [Purposes](purposes/).
+- **Themes, not overrides.** Four palettes (generic, budget, traffic and roadsign) each come in light and dark. Components use theme tokens only, so switching the palette restyles everything. Try the switcher in the header.
+- **Accessible by default.** Controls are native elements with labels, hint and error text wired through `aria-describedby`, visible focus and reduced motion support.
+- **Composition over configuration.** Props stay small. Complex screens are built by combining components, not by adding options.
+- **No app logic.** The library has no data fetching, routing setup or app state. Text is always passed in, so apps own their wording and translations.
+
+## Built with
+
+React 19, Tailwind CSS 4, daisyUI 5, React Router 8 and the Tabler icon set. The package is ESM only and split into subpaths, so apps load only the groups they import.
+
+## Component groups
+
+| Import                    | What is in it                                       |
+| ------------------------- | --------------------------------------------------- |
+| `@ksojecki/ui/actions`    | Buttons, icon buttons and button groups             |
+| `@ksojecki/ui/forms`      | Inputs, pickers, filters and form actions           |
+| `@ksojecki/ui/feedback`   | Alerts, badges, toasts, progress and loading states |
+| `@ksojecki/ui/data`       | Tables and key figures                              |
+| `@ksojecki/ui/layout`     | Pages, sections, cards and containers               |
+| `@ksojecki/ui/navigation` | Links, menus and dropdowns                          |
+| `@ksojecki/ui/overlays`   | Dialogs and cookie consent                          |
+| `@ksojecki/ui/typography` | Headings, paragraphs and long-form text             |
+| `@ksojecki/ui/icons`      | The Tabler icon set                                 |
+
+Browse them all on the [Components](components/) page.

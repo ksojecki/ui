@@ -1,0 +1,21 @@
+---
+title: Icons
+description: The whole Tabler icon set, imported by name.
+order: 4
+---
+
+`@ksojecki/ui/icons` re-exports the [Tabler icon set](https://react-icons.github.io/react-icons/icons/tb/) from `react-icons/tb`, plus the `IconType` type.
+
+<Example name="guides/icons" />
+
+## Import by name
+
+The package is marked side-effect free, so your bundler keeps only the icons you import. Do not use `import * as icons`, which pulls in all of them.
+
+```tsx
+import { TbPlus, type IconType } from '@ksojecki/ui/icons';
+```
+
+## Accessibility
+
+Icons next to text are decorative: add `aria-hidden="true"`. An icon on its own needs a name; use [IconButton](../components/icon-button/), which requires a `label`.

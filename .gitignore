@@ -3,3 +3,4 @@ dist/
 test-output/
 *.tgz
 *.tsbuildinfo
+.astro/

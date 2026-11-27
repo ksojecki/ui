@@ -1,0 +1,44 @@
+---
+import { Code } from 'astro:components';
+import ExamplePreview from './ExamplePreview';
+import { exampleSource } from '../lib/examples';
+
+interface Props {
+  /** Path under `src/examples/` without `.tsx`, e.g. `button/purposes`. */
+  name: string;
+}
+
+const { name } = Astro.props;
+const code = exampleSource(name);
+---
+
+<figure class="docs-example not-prose my-6 overflow-hidden rounded-box border border-(--paper-border)">
+  <div class="bg-base-100 p-6">
+    <ExamplePreview client:visible name={name} />
+  </div>
+  <div class="relative border-t border-(--paper-border)">
+    <button
+      class="btn btn-xs btn-default absolute top-2 right-2"
+      data-copy-code
+      type="button">Copy</button
+    >
+    <Code code={code} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} />
+  </div>
+</figure>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-code]')) {
+    button.addEventListener('click', async () => {
+      const code = button.parentElement?.querySelector('pre')?.textContent ?? '';
+      try {
+        await navigator.clipboard.writeText(code);
+        button.textContent = 'Copied';
+      } catch {
+        button.textContent = 'Copy failed';
+      }
+      setTimeout(() => {
+        button.textContent = 'Copy';
+      }, 1500);
+    });
+  }
+</script>
