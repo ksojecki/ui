@@ -117,3 +117,7 @@ html {
   overflow-x: auto;
   padding: 0.5rem 0.75rem;
 }
+
+header.paper-navbar {
+  position: sticky;
+}
