@@ -14,9 +14,7 @@ export default function MenuBasic() {
         <MenuItem disabled>
           <MenuButton>Team</MenuButton>
         </MenuItem>
-        <li>
-          <MenuNavLink to="/">Home (router link)</MenuNavLink>
-        </li>
+        <MenuNavLink to="/">Home (router link)</MenuNavLink>
       </Menu>
       <Menu horizontal size="sm">
         <MenuItem>
