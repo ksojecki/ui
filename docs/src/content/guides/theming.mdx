@@ -1,0 +1,60 @@
+---
+title: Theming
+description: Four palettes, each in light and dark, built on daisyUI themes and shared tokens.
+order: 2
+---
+
+## Palettes
+
+| Palette  | Light theme | Dark theme      |
+| -------- | ----------- | --------------- |
+| Generic  | `generic`   | `generic-dark`  |
+| Budget   | `budget`    | `budget-dark`   |
+| Traffic  | `traffic`   | `traffic-dark`  |
+| Roadsign | `roadsign`  | `roadsign-dark` |
+
+Load one palette entry in your stylesheet:
+
+```css
+@import 'tailwindcss';
+@import '@ksojecki/ui/styles/budget.css';
+```
+
+With no `data-theme` on `<html>`, the operating system's colour scheme picks light or dark. Set it to force one:
+
+```html
+<html data-theme="budget-dark"></html>
+```
+
+Use the palette and scheme switcher in the header of this site to see every example in each theme.
+
+## Composing the pieces
+
+To control the daisyUI setup yourself, import the shared rules and one palette after the daisyUI plugin, and point Tailwind at the built components:
+
+```css
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes: false;
+}
+@import '@ksojecki/ui/theme.css';
+@import '@ksojecki/ui/themes/generic.css';
+@source '../node_modules/@ksojecki/ui/dist';
+```
+
+## Tokens
+
+Components use daisyUI colour tokens (`primary`, `base-100`, `base-content`, `error` and the rest) plus a few shared ones from `theme.css`:
+
+| Token                                                              | Use                                     |
+| ------------------------------------------------------------------ | --------------------------------------- |
+| `--paper-border`, `--paper-shadow`                                 | Borders and shadows of cards and sheets |
+| `--ink-muted`                                                      | Secondary text                          |
+| `--focus-ring-color`                                               | Focus outlines                          |
+| `--motion-fast`, `--motion-base`, `--motion-slow`, `--motion-ease` | Durations and easing                    |
+
+Never use hex values or palette classes in apps. If a colour is missing, add a token to every palette, in light and dark.
+
+## Motion
+
+`animate-fade-in`, `animate-slide-up` and `animate-scale-in` come from `theme.css` and switch off under `prefers-reduced-motion`.

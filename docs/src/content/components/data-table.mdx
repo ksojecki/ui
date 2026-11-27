@@ -1,0 +1,32 @@
+---
+title: DataTable
+description: A table driven by plain objects. Pass rows and optional columns, not markup.
+group: data
+components: [DataTable]
+---
+
+Each column reads a `key` from the row. `kind: 'number'` right-aligns it with tabular figures, `format` formats the value and `render` renders the whole cell. Without `columns` there is one column per property of the first row, with humanised headers.
+
+## Columns
+
+<Example name="data-table/basic" />
+
+## Inferred columns and empty state
+
+<Example name="data-table/inferred" />
+
+## Column options
+
+```ts
+interface DataTableColumn<T> {
+  key?: keyof T & string; // property read from each row
+  id?: string; // identifies a column without key
+  header?: ReactNode; // defaults to the humanised key
+  kind?: 'text' | 'number';
+  format?: (value: T[keyof T], row: T) => ReactNode;
+  render?: (row: T) => ReactNode; // wins over format
+  className?: string;
+  srOnlyHeader?: boolean; // for action columns
+  hidden?: boolean;
+}
+```

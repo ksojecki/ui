@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import { componentDoc } from '../lib/props';
+import { inlineMarkdown } from '../lib/inline';
+import { docsHref } from '../lib/paths';
+
+interface Props {
+  of: string;
+}
+
+const doc = componentDoc(Astro.props.of);
+const passesNativeProps = doc.extendsTypes.some((type) => type !== 'Pick');
+const pages = await getCollection('components');
+const inherited = doc.omitBases.map(({ type, omitted }) => {
+  const component = type.replace(/Props$/, '');
+  const page = pages.find((entry) => entry.data.components.includes(component));
+  return { type, omitted, component, href: page && docsHref(`/components/${page.id}/#props`) };
+});
+---
+
+<div class="docs-props">
+  {doc.description && <p class="mb-3" set:html={inlineMarkdown(doc.description)} />}
+  {
+    doc.props.length > 0 ? (
+      <div class="overflow-x-auto rounded-box border border-(--paper-border) bg-base-100">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Prop</th>
+              <th scope="col">Type</th>
+              <th scope="col">Default</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {doc.props.map((prop) => (
+              <tr>
+                <th class="font-mono font-semibold whitespace-nowrap" scope="row">
+                  {prop.name}
+                  {prop.required && (
+                    <span class="text-error" title="Required">
+                      *
+                    </span>
+                  )}
+                </th>
+                <td class="font-mono text-xs">{prop.type}</td>
+                <td class="font-mono text-xs whitespace-nowrap">{prop.defaultValue ?? '–'}</td>
+                <td set:html={inlineMarkdown(prop.description) || '–'} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p>No props of its own.</p>
+    )
+  }
+  <p class="mt-2 text-sm text-(--ink-muted)">
+    {doc.props.some((prop) => prop.required) && <span><span class="text-error">*</span> required. </span>}
+    {
+      passesNativeProps && (
+        <span>
+          Other props go to the underlying element
+          {doc.extendsTypes.length > 0 && !doc.extendsTypes.includes('Omit') && (
+            <>
+              {' '}
+              (<code>{doc.extendsTypes.join(', ')}</code>)
+            </>
+          )}
+          .
+        </span>
+      )
+    }
+    {
+      inherited.map(({ type, omitted, component, href }) => (
+        <span>
+          Also takes the props of{' '}
+          {href ? <a class="underline" href={href}>{component}</a> : <code>{type}</code>}
+          {omitted.length > 0 && (
+            <>
+              {' '}
+              except <code>{omitted.join(', ')}</code>
+            </>
+          )}
+          .{' '}
+        </span>
+      ))
+    }
+    <a class="underline" href={`https://github.com/ksojecki/ui/blob/main/${doc.file}`}>Source</a>
+  </p>
+</div>

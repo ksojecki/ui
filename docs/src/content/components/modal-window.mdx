@@ -1,0 +1,18 @@
+---
+title: ModalWindow
+description: A dialog with a title, content and actions, built on the native dialog element.
+group: overlays
+components: [ModalWindow, NativeDialog]
+---
+
+Open and close it through the `api` ref: `api.current?.show()` and `api.current?.close()`. The native `<dialog>` traps focus and closes on Escape.
+
+## Usage
+
+<Example name="modal-window/basic" />
+
+## Plain dialog
+
+`NativeDialog` is the box behind `ModalWindow`, for custom layouts.
+
+<Example name="modal-window/native" />

@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import { GROUPS } from '../../lib/groups';
+import { componentPath } from '../../lib/nav';
+import { docsHref } from '../../lib/paths';
+
+const pages = (await getCollection('components')).toSorted((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+const groups = GROUPS.map((group) => ({
+  ...group,
+  pages: pages.filter((page) => page.data.group === group.id),
+}));
+const headings = groups.map((group) => ({ depth: 2, slug: group.id, text: group.label }));
+---
+
+<DocsLayout
+  description="Every @ksojecki/ui component, grouped by import subpath."
+  headings={headings}
+  title="Components"
+>
+  <h1 class="text-4xl font-bold">Components</h1>
+  <p class="mt-3 text-lg text-(--ink-muted)">
+    Every component, grouped by its import subpath. Each page has live examples with their code
+    and the full list of props.
+  </p>
+  {
+    groups.map((group) => (
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold" id={group.id}>
+          {group.label}
+        </h2>
+        <p class="mt-1 text-(--ink-muted)">
+          {group.description} <code class="text-sm">@ksojecki/ui/{group.id}</code>
+        </p>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {group.pages.map((page) => (
+            <li>
+              <a
+                class="card card-sm h-full transition-colors hover:border-primary focus-visible:border-primary"
+                href={docsHref(componentPath(page.id))}
+              >
+                <span class="card-body">
+                  <span class="card-title text-base">{page.data.title}</span>
+                  <span class="text-sm text-(--ink-muted)">{page.data.description}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</DocsLayout>

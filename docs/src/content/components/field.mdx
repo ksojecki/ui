@@ -1,0 +1,18 @@
+---
+title: Field
+description: The labelled group behind every form control, with hint and error messages.
+group: forms
+components: [Field, FieldMessage, FieldMessages]
+---
+
+`Input`, `Select`, `Textarea` and `FileInput` use `Field` when you pass them a `label`. Use it directly to label a custom control. Without `controlId` it labels a group of controls, such as radios.
+
+## Usage
+
+<Example name="field/basic" />
+
+## Messages
+
+`FieldMessage` is one hint or error line. `FieldMessages` renders both, with the ids that `fieldDescribedBy(controlId)` returns, so a custom control can reference them.
+
+<Example name="field/messages" />

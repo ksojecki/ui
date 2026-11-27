@@ -1,0 +1,81 @@
+---
+title: Contributing
+description: How the library and this documentation are organised, and how to add a component.
+order: 5
+---
+
+## Repository layout
+
+| Path            | Contents                                                   |
+| --------------- | ---------------------------------------------------------- |
+| `src/<group>/`  | Components, exported through the group's `index.ts`        |
+| `src/internal/` | Implementation details that are not part of the public API |
+| `theme.css`     | Shared rules and tokens                                    |
+| `themes/*.css`  | One file per palette, light and dark                       |
+| `docs/`         | This site, built with Astro                                |
+
+## Add a component
+
+1. Write the component in `src/<group>/` and export it from the group's `index.ts`.
+2. Document its props with JSDoc comments. The props tables on this site are generated from them.
+3. Add a spec next to it, covering keyboard and screen-reader behaviour.
+4. Add its docs page, as below.
+
+## Add a docs page
+
+A component page is one MDX file plus one file per example.
+
+```text
+docs/src/
+  content/components/my-component.mdx
+  examples/my-component/basic.tsx
+```
+
+The example is a plain React component with a default export. It is rendered live and its source is shown under it, so keep it short and import from the public subpaths:
+
+```tsx
+import { MyComponent } from '@ksojecki/ui/forms';
+
+export default function MyComponentBasic() {
+  return <MyComponent label="Name" />;
+}
+```
+
+The page sets its group and the components whose props it lists, then places the examples:
+
+```mdx
+---
+title: MyComponent
+description: One sentence about what it is for.
+group: forms
+components: [MyComponent]
+---
+
+## Usage
+
+<Example name="my-component/basic" />
+```
+
+The page appears in the sidebar and on the Components page automatically. A test fails when an exported component has no page.
+
+## Run the docs
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev:docs
+```
+
+Then open [localhost:4400](http://localhost:4400). Examples load the components from source, so changes show up immediately.
+
+## Checks
+
+Before opening a pull request, run:
+
+```sh
+pnpm lint
+pnpm format:check
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm pack
+```

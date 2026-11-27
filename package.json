@@ -76,12 +76,13 @@
   },
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
-    "dev:ui-showcase": "pnpm --filter @ksojecki/ui-showcase dev",
+    "build:docs": "pnpm --filter @ksojecki/ui-docs build",
+    "dev:docs": "pnpm --filter @ksojecki/ui-docs dev",
     "format": "oxfmt --write",
     "format:check": "oxfmt --check",
-    "lint": "oxlint src vite.config.mts showcase/src showcase/vite.config.mts",
-    "typecheck": "tsc --noEmit -p tsconfig.lib.json && tsc --noEmit -p tsconfig.spec.json",
-    "test": "vitest run --config vite.config.mts"
+    "lint": "oxlint src tests vite.config.mts docs/src docs/astro.config.mjs",
+    "test": "vitest run --config vite.config.mts",
+    "typecheck": "tsc --noEmit -p tsconfig.lib.json && tsc --noEmit -p tsconfig.spec.json"
   },
   "dependencies": {
     "cally": "0.9.2",
