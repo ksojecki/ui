@@ -16,66 +16,71 @@ html {
   scroll-padding-top: 5rem;
 }
 
-/* Long-form text from MDX: guides and the prose between examples. */
+/* Long-form text from MDX: guides and the prose between examples. Live examples keep the library's own styles. */
 .docs-prose {
   line-height: 1.65;
+}
+
+/* Tailwind's base line height, so examples look as they do in an app. */
+.docs-example {
+  line-height: 1.5;
 }
 
 .docs-prose > * + * {
   margin-top: 1rem;
 }
 
-.docs-prose h2 {
+.docs-prose h2:not(.docs-example *) {
   margin-top: 2.5rem;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.25;
 }
 
-.docs-prose h3 {
+.docs-prose h3:not(.docs-example *) {
   margin-top: 1.75rem;
   font-size: 1.15rem;
   font-weight: 700;
 }
 
-.docs-prose a:not(.btn) {
+.docs-prose a:not(.btn):not(.docs-example *) {
   color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
 
-.docs-prose ul,
-.docs-prose ol {
+.docs-prose ul:not(.docs-example *),
+.docs-prose ol:not(.docs-example *) {
   padding-left: 1.5rem;
 }
 
-.docs-prose ul {
+.docs-prose ul:not(.docs-example *) {
   list-style: disc;
 }
 
-.docs-prose ol {
+.docs-prose ol:not(.docs-example *) {
   list-style: decimal;
 }
 
-.docs-prose li + li {
+.docs-prose li + li:not(.docs-example *) {
   margin-top: 0.25rem;
 }
 
-.docs-prose table {
+.docs-prose table:not(.docs-example *) {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9375rem;
 }
 
-.docs-prose th,
-.docs-prose td {
+.docs-prose th:not(.docs-example *),
+.docs-prose td:not(.docs-example *) {
   border-bottom: 1px solid var(--paper-border);
   padding: 0.5rem 0.75rem;
   text-align: left;
   vertical-align: top;
 }
 
-.docs-prose th {
+.docs-prose th:not(.docs-example *) {
   font-weight: 700;
 }
 
