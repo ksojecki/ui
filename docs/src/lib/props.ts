@@ -18,6 +18,8 @@ export interface ComponentDoc {
   props: PropRow[];
   /** Names of the types the props extend, e.g. `ButtonHTMLAttributes`. */
   extendsTypes: string[];
+  /** Types wrapped in `Omit<…>` by the props type, e.g. `TableProps`. Their remaining props are accepted too. */
+  omitBases: string[];
 }
 
 const repositoryRoot = resolve(process.cwd(), '..');
@@ -32,7 +34,12 @@ function typeOf(prop: NonNullable<Documentation['props']>[string]) {
   return raw.replace(/\s+/g, ' ').replace(/^\| /, '').trim();
 }
 
-function toDoc(doc: Documentation, file: string): ComponentDoc | undefined {
+function omitBasesOf(name: string, source: string) {
+  const declaration = new RegExp(`(?:interface|type) ${name}Props\\b[^{]*`).exec(source)?.[0] ?? '';
+  return [...declaration.matchAll(/\bOmit<(\w+Props)\b/g)].map((match) => match[1]);
+}
+
+function toDoc(doc: Documentation, file: string, source: string): ComponentDoc | undefined {
   if (!doc.displayName) {
     return undefined;
   }
@@ -48,7 +55,19 @@ function toDoc(doc: Documentation, file: string): ComponentDoc | undefined {
       description: prop.description ?? '',
     })),
     extendsTypes: doc.composes ?? [],
+    omitBases: omitBasesOf(doc.displayName, source),
   };
+}
+
+function docsInFile(file: string) {
+  const path = resolve(repositoryRoot, file);
+  const source = readFileSync(path, 'utf8');
+  const parsed = parse(source, {
+    filename: path,
+    importer: makeFsImporter(),
+    resolver: new builtinResolvers.FindExportedDefinitionsResolver(),
+  });
+  return parsed.flatMap((doc) => toDoc(doc, relative(repositoryRoot, path), source) ?? []);
 }
 
 /** Props of every exported component in the library, read from its TypeScript source. */
@@ -61,17 +80,8 @@ export function componentDocs() {
     (file) => !file.includes('.spec.') && !file.includes('/internal/'),
   );
   for (const file of files.toSorted()) {
-    const path = resolve(repositoryRoot, file);
-    const parsed = parse(readFileSync(path, 'utf8'), {
-      filename: path,
-      importer: makeFsImporter(),
-      resolver: new builtinResolvers.FindExportedDefinitionsResolver(),
-    });
-    for (const doc of parsed) {
-      const entry = toDoc(doc, relative(repositoryRoot, path));
-      if (entry) {
-        cache.set(entry.name, entry);
-      }
+    for (const entry of docsInFile(file)) {
+      cache.set(entry.name, entry);
     }
   }
   return cache;
